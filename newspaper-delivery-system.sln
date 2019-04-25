@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "newspaper-delivery-system", "newspaper-delivery-system\newspaper-delivery-system.csproj", "{1B095F8F-7A05-4631-915C-B733CA0E199C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carrier_test", "carrier_test\carrier_test.csproj", "{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B095F8F-7A05-4631-915C-B733CA0E199C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B095F8F-7A05-4631-915C-B733CA0E199C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B095F8F-7A05-4631-915C-B733CA0E199C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B095F8F-7A05-4631-915C-B733CA0E199C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4F881DA-818D-42B4-A001-9A039CA9D771}
+	EndGlobalSection
+EndGlobal

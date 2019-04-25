@@ -1,0 +1,15 @@
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\carrier_test.deps.json
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\carrier_test.runtimeconfig.json
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\carrier_test.runtimeconfig.dev.json
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\carrier_test.dll
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\carrier_test.pdb
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\obj\Debug\netcoreapp2.1\carrier_test.csprojAssemblyReference.cache
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\obj\Debug\netcoreapp2.1\carrier_test.csproj.CoreCompileInputs.cache
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\obj\Debug\netcoreapp2.1\carrier_test.AssemblyInfoInputs.cache
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\obj\Debug\netcoreapp2.1\carrier_test.AssemblyInfo.cs
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\obj\Debug\netcoreapp2.1\carrier_test.dll
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\obj\Debug\netcoreapp2.1\carrier_test.pdb
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\newspaper-delivery-system.exe
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\newspaper-delivery-system.pdb
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\bin\Debug\netcoreapp2.1\newspaper-delivery-system.exe.config
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\carrier_test\obj\Debug\netcoreapp2.1\carrier_test.csproj.CopyComplete

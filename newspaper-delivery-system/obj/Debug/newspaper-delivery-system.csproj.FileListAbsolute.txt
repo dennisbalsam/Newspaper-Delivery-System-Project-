@@ -1,0 +1,9 @@
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\bin\Debug\newspaper-delivery-system.exe.config
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\bin\Debug\newspaper-delivery-system.exe
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\bin\Debug\newspaper-delivery-system.pdb
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\obj\Debug\newspaper-delivery-system.csprojAssemblyReference.cache
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\obj\Debug\newspaper_delivery_system.Properties.Resources.resources
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\obj\Debug\newspaper-delivery-system.csproj.GenerateResource.cache
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\obj\Debug\newspaper-delivery-system.csproj.CoreCompileInputs.cache
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\obj\Debug\newspaper-delivery-system.exe
+C:\Users\Matthew\Documents\development\Newspaper-Delivery-System-Project-\newspaper-delivery-system\newspaper-delivery-system\obj\Debug\newspaper-delivery-system.pdb
