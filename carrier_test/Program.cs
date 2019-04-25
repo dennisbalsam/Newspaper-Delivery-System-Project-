@@ -7,6 +7,8 @@ namespace carrier_test
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Carrier class test program:\n");
+
             // testing default constructor with default params
             Console.WriteLine("Testing default constructor with default params:");
             Carrier c1 = new Carrier();

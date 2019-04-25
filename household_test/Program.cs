@@ -7,6 +7,8 @@ namespace household_test
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Household class test program:\n");
+
             // testing default constructor no params
             Console.WriteLine("Testing default constructor no params:");
             Household h1 = new Household();
