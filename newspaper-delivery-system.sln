@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "newspaper-delivery-system", "newspaper-delivery-system\newspaper-delivery-system.csproj", "{1B095F8F-7A05-4631-915C-B733CA0E199C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carrier_test", "carrier_test\carrier_test.csproj", "{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "carrier_test", "carrier_test\carrier_test.csproj", "{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "household_test", "household_test\household_test.csproj", "{A98DBAEA-FFA1-456F-8B15-59548AD67A2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2B9FFA7-4B91-4A4E-AEDD-C6B4CF89C291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98DBAEA-FFA1-456F-8B15-59548AD67A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98DBAEA-FFA1-456F-8B15-59548AD67A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98DBAEA-FFA1-456F-8B15-59548AD67A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98DBAEA-FFA1-456F-8B15-59548AD67A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

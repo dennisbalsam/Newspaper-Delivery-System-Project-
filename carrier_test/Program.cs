@@ -22,6 +22,22 @@ namespace carrier_test
             Carrier c3 = new Carrier("United Delivery", "101 Mulberry Lane", "8008784848");
             Console.WriteLine(c3 + "\n");
 
+            // test getters
+            Console.WriteLine("Testing getters:");
+            Console.WriteLine("Name: " + c3.Name);
+            Console.WriteLine("Address: " + c3.Address);
+            Console.WriteLine("Phone: " + c3.Phone);
+            Console.WriteLine();
+            
+            // test setters
+            Console.WriteLine("Testing setters:");
+
+            c3.Name = "NY Paper Carriers";
+                Console.WriteLine("New Name: " + c3.Name);
+            c3.Address = "86 Coral Ave";
+                Console.WriteLine("New Address: " + c3.Address);
+            c3.Phone = "8004499";
+                Console.WriteLine("New Phone: " + c3.Phone);
         }
     }
 }
