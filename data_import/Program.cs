@@ -12,10 +12,8 @@ namespace data_import
             // path to csv file
             string path = @"..\..\..\..\";
 
-            // store data file as text
-            string data = File.ReadAllText(path + "carriers.csv");
-            // split into lines
-            string[] lines = data.Split('\n');
+            // call file line handler
+            string[] lines = DataHandler.getFileLines(path + "carriers.csv"); ;
 
             // store carrier data
             List<Carrier> carriers = new List<Carrier>();
