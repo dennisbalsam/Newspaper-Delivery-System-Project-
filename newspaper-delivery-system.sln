@@ -11,6 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "household_test", "household
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "list_test", "list_test\list_test.csproj", "{DB390165-1975-487C-83D1-746268CAC53D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data_import_test", "data_import\data_import_test.csproj", "{B08D75F0-0400-4F07-9EF3-E613E4AA5FB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8F76CB0-C7E1-440E-B5B5-CA03C09F4493}"
+	ProjectSection(SolutionItems) = preProject
+		carriers.csv = carriers.csv
+		households.csv = households.csv
+		publications.csv = publications.csv
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +42,10 @@ Global
 		{DB390165-1975-487C-83D1-746268CAC53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB390165-1975-487C-83D1-746268CAC53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB390165-1975-487C-83D1-746268CAC53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08D75F0-0400-4F07-9EF3-E613E4AA5FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08D75F0-0400-4F07-9EF3-E613E4AA5FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08D75F0-0400-4F07-9EF3-E613E4AA5FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08D75F0-0400-4F07-9EF3-E613E4AA5FB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
