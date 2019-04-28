@@ -12,46 +12,15 @@ namespace data_import
             // path to csv file
             string path = @"..\..\..\..\";
 
-            // call file line handler
-            string[] carrierLines = DataHandler.getFileLines(path + "carriers.csv");
-            string[] householdLines = DataHandler.getFileLines(path + "households.csv");
-            string[] publicationLines = DataHandler.getFileLines(path + "publications.csv");
+            // store data: carriers, households and publications
+            List<Carrier> carriers = DataHandler.getCarrierData(path + "carriers.csv");
+            List<Household> households = DataHandler.getHouseholdData(path + "households.csv");
+            List<Publication> publications = DataHandler.getPublicationData(path + "publications.csv");
 
-            // store data
-            List<Carrier> carriers = new List<Carrier>();
-            List<Household> households = new List<Household>();
-            List<Publication> publications = new List<Publication>();
-
-            // store carrier data
-            foreach (string line in carrierLines)
-            {
-                string[] tokens = line.Split(',');
-
-                if (tokens[0] != "name") // skip first row
-                {
-                    carriers.Add(new Carrier(tokens[0], tokens[1], tokens[2]));
-                }
-            }
-            // store household data
-            foreach (string line in householdLines)
-            {
-                string[] tokens = line.Split(',');
-
-                if (tokens[0] != "name") // skip first row
-                {
-                    households.Add(new Household(tokens[0], tokens[1], tokens[2]));
-                }
-            }
-            // store publication data
-            foreach (string line in publicationLines)
-            {
-                string[] tokens = line.Split(',');
-
-                if (tokens[0] != "name") // skip first row
-                {
-                    publications.Add(new Publication(tokens[0], Convert.ToDouble(tokens[1])));
-                }
-            }
+            // list how many data items there are for each class (should equal csv's num. lines - 1)
+            Console.WriteLine("Carriers: " + carriers.Count);
+            Console.WriteLine("Households: " + households.Count);
+            Console.WriteLine("Publications: " + publications.Count + "\n");
 
             // display all carriers
             Console.WriteLine("Display all carriers:\n");
@@ -73,6 +42,7 @@ namespace data_import
             {
                 Console.WriteLine(p + "\n");
             }
+
 
         }
     }
