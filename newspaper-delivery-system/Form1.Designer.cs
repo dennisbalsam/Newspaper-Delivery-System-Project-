@@ -33,6 +33,8 @@
             this.welcomelabel2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataList = new System.Windows.Forms.ListBox();
+            this.datalist2 = new System.Windows.Forms.ListBox();
+            this.option1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -43,7 +45,7 @@
             "Household Info",
             "Carriers",
             "Publications"});
-            this.comboBox1.Location = new System.Drawing.Point(344, 107);
+            this.comboBox1.Location = new System.Drawing.Point(261, 107);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(762, 21);
             this.comboBox1.TabIndex = 0;
@@ -52,7 +54,7 @@
             // Welcomelabel
             // 
             this.Welcomelabel.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Welcomelabel.Location = new System.Drawing.Point(476, 24);
+            this.Welcomelabel.Location = new System.Drawing.Point(401, 24);
             this.Welcomelabel.Name = "Welcomelabel";
             this.Welcomelabel.Size = new System.Drawing.Size(483, 23);
             this.Welcomelabel.TabIndex = 1;
@@ -64,7 +66,7 @@
             // 
             this.welcomelabel2.AutoSize = true;
             this.welcomelabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomelabel2.Location = new System.Drawing.Point(619, 57);
+            this.welcomelabel2.Location = new System.Drawing.Point(544, 57);
             this.welcomelabel2.Name = "welcomelabel2";
             this.welcomelabel2.Size = new System.Drawing.Size(196, 20);
             this.welcomelabel2.TabIndex = 2;
@@ -73,7 +75,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(623, 154);
+            this.button1.Location = new System.Drawing.Point(559, 154);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 42);
             this.button1.TabIndex = 3;
@@ -86,18 +88,41 @@
             // 
             this.dataList.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.dataList.FormattingEnabled = true;
-            this.dataList.Location = new System.Drawing.Point(402, 265);
+            this.dataList.Location = new System.Drawing.Point(69, 234);
             this.dataList.Name = "dataList";
-            this.dataList.Size = new System.Drawing.Size(671, 95);
+            this.dataList.Size = new System.Drawing.Size(671, 173);
             this.dataList.TabIndex = 4;
             this.dataList.Visible = false;
             this.dataList.SelectedIndexChanged += new System.EventHandler(this.dataList_SelectedIndexChanged);
+            // 
+            // datalist2
+            // 
+            this.datalist2.FormattingEnabled = true;
+            this.datalist2.Location = new System.Drawing.Point(69, 446);
+            this.datalist2.Name = "datalist2";
+            this.datalist2.Size = new System.Drawing.Size(671, 173);
+            this.datalist2.TabIndex = 5;
+            this.datalist2.Visible = false;
+            this.datalist2.SelectedIndexChanged += new System.EventHandler(this.datalist2_SelectedIndexChanged);
+            // 
+            // option1
+            // 
+            this.option1.Location = new System.Drawing.Point(915, 234);
+            this.option1.Name = "option1";
+            this.option1.Size = new System.Drawing.Size(149, 52);
+            this.option1.TabIndex = 6;
+            this.option1.Text = "button2";
+            this.option1.UseVisualStyleBackColor = true;
+            this.option1.Visible = false;
+            this.option1.Click += new System.EventHandler(this.option1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1434, 550);
+            this.ClientSize = new System.Drawing.Size(1284, 669);
+            this.Controls.Add(this.option1);
+            this.Controls.Add(this.datalist2);
             this.Controls.Add(this.dataList);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.welcomelabel2);
@@ -118,6 +143,8 @@
         private System.Windows.Forms.Label welcomelabel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox dataList;
+        private System.Windows.Forms.ListBox datalist2;
+        private System.Windows.Forms.Button option1;
     }
 }
 

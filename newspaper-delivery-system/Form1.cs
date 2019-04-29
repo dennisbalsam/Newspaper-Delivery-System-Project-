@@ -47,6 +47,9 @@ namespace newspaper_delivery_system
             button1.Visible = true;
             button1.Text = "Display all Households";
             button1.Click += new EventHandler(DisplayallHouseinfo);
+            option1.Visible = true;
+            option1.Click += new EventHandler(AddSubscription);
+
         }
         //Carrier Info Function
         public void CarrierInfo()
@@ -68,6 +71,14 @@ namespace newspaper_delivery_system
             button1.Text = "Display all Publications";
             button1.Click += new EventHandler(DisplayallPublicationinfo);
         }
+        //Add Subscription GUI Function
+        public void AddSubscription(object sender, EventArgs e)
+        {
+            datalist2.DataSource = publications;
+            datalist2.Visible = true;
+
+        }
+
 
         //Display all households
         public void DisplayallHouseinfo(object sender, EventArgs e)
@@ -112,6 +123,16 @@ namespace newspaper_delivery_system
         }
 
         private void dataList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datalist2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void option1_Click(object sender, EventArgs e)
         {
 
         }
