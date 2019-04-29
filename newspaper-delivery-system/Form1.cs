@@ -32,7 +32,7 @@ namespace newspaper_delivery_system
                 PublicationInfo();
             }
         }
-
+        // Household info function
         public void HouseholdInfo()
         {
             dataList.Visible = false;
@@ -42,7 +42,7 @@ namespace newspaper_delivery_system
             button1.Text = "Display all Households";
             button1.Click += new EventHandler(DisplayallHouseinfo);
         }
-
+        //Carrier Info Function
         public void CarrierInfo()
         {
             dataList.Visible = false;
@@ -52,7 +52,7 @@ namespace newspaper_delivery_system
             button1.Text = "Display all Carriers";
             button1.Click += new EventHandler(DisplayallCarrierinfo);
         }
-
+        //Publication Info Function
         public void PublicationInfo()
         {
             dataList.Visible = false;
@@ -63,6 +63,7 @@ namespace newspaper_delivery_system
             button1.Click += new EventHandler(DisplayallPublicationinfo);
         }
 
+        //Display all households
         public void DisplayallHouseinfo(object sender, EventArgs e)
         {
 
@@ -72,7 +73,7 @@ namespace newspaper_delivery_system
             dataList.Visible = true;
 
         }
-
+        //Display all carriers
         public void DisplayallCarrierinfo(object sender, EventArgs e)
         {
             string path = @"..\..\..\";
@@ -82,7 +83,7 @@ namespace newspaper_delivery_system
 
         }
 
-
+        //Display all publications
         public void DisplayallPublicationinfo(object sender, EventArgs e)
         {
             string path = @"..\..\..\";
@@ -91,6 +92,8 @@ namespace newspaper_delivery_system
             dataList.Visible = true;
 
         }
+
+        //All form controls
         private void welcomelabel2_Click(object sender, EventArgs e)
         {
 
