@@ -18,6 +18,8 @@ namespace newspaper_delivery_system
         List<Carrier> carriers = DataHandler.getCarrierData(path + "carriers.csv");
         List<Publication> publications = DataHandler.getPublicationData(path + "publications.csv");
 
+        BindingSource bs = new BindingSource();
+    
         public Form1()
         {
             InitializeComponent();
@@ -39,7 +41,7 @@ namespace newspaper_delivery_system
             }
         }
         // Household info function
-        public void HouseholdInfo()
+        public void PublicationInfo()
         {
             dataList.Visible = false;
             welcomelabel2.Visible = false;
@@ -48,7 +50,13 @@ namespace newspaper_delivery_system
             button1.Text = "Display all Households";
             button1.Click += new EventHandler(DisplayallHouseinfo);
             option1.Visible = true;
-            option1.Click += new EventHandler(AddSubscription);
+            option2.Visible = true;
+            option1.Click += new EventHandler(AddNewSubscription);
+            addSub.Click += new EventHandler(addSubscription);
+            option2.Click += new EventHandler(DisplaySubs);
+
+            
+            
 
         }
         //Carrier Info Function
@@ -62,7 +70,7 @@ namespace newspaper_delivery_system
             button1.Click += new EventHandler(DisplayallCarrierinfo);
         }
         //Publication Info Function
-        public void PublicationInfo()
+        public void HouseholdInfo()
         {
             dataList.Visible = false;
             welcomelabel2.Visible = false;
@@ -71,9 +79,26 @@ namespace newspaper_delivery_system
             button1.Text = "Display all Publications";
             button1.Click += new EventHandler(DisplayallPublicationinfo);
         }
-        //Add Subscription GUI Function
-        public void AddSubscription(object sender, EventArgs e)
+        //Button to add the subscirption to a house hold
+        public void addSubscription(object sender, EventArgs e)
         {
+
+            //Add the selected publication to the house
+            households.ElementAt(dataList.SelectedIndex).addSubscription(publications.ElementAt(datalist2.SelectedIndex));
+            bs.ResetBindings(false);
+            addSub.Click += new EventHandler(DisplayallHouseinfo);
+        }
+
+        //Display current houses subscriptions
+        public void DisplaySubs(object sender, EventArgs e)
+        {
+            datalist2.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
+
+        }
+        //show list of publications to Add a Subscription GUI Function
+        public void AddNewSubscription(object sender, EventArgs e)
+        {
+            addSub.Visible = true;
             datalist2.DataSource = publications;
             datalist2.Visible = true;
 
@@ -83,7 +108,9 @@ namespace newspaper_delivery_system
         //Display all households
         public void DisplayallHouseinfo(object sender, EventArgs e)
         {
-            dataList.DataSource = households;
+
+            bs.DataSource = households;
+            dataList.DataSource = bs;
             dataList.Visible = true;
 
         }
@@ -97,6 +124,7 @@ namespace newspaper_delivery_system
         //Display all publications
         public void DisplayallPublicationinfo(object sender, EventArgs e)
         {
+
             dataList.DataSource = publications;
             dataList.Visible = true;
         }
@@ -133,6 +161,16 @@ namespace newspaper_delivery_system
         }
 
         private void option1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addSub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void option2_Click(object sender, EventArgs e)
         {
 
         }

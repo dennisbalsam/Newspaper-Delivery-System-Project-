@@ -9,7 +9,7 @@ namespace newspaper_delivery_system
     // Households subscribe to publications and are delivered to by carriers
     public class Household : Carrier
     {
-        private List<string> subscriptions = new List<string>(); // Publications household is subscribed to
+        private List<Publication> subscriptions = new List<Publication>(); // Publications household is subscribed to
         private bool suspended; // if household is suspended from receiving delivery
 
         // getter and setter
@@ -29,10 +29,10 @@ namespace newspaper_delivery_system
         // ====================
 
         // check if household has subscription
-        public bool hasSubscription(string sub)
+        public bool hasSubscription(Publication sub)
         {
             // subscription to look for
-            string found = subscriptions.Find(item => item == sub);
+            Publication found = subscriptions.Find(item => item.Name == sub.Name);
 
             if (found == null)
                 return false;
@@ -40,13 +40,16 @@ namespace newspaper_delivery_system
         }
 
         // add subscription to list
-        public void addSubscription(string sub)
+        public void addSubscription(Publication sub)
         {
+            sub.incrementSubs();
+            sub.incrementOwed();
             subscriptions.Add(sub);
+
         }
 
         // remove subscription from list
-        public bool removeSubscription(string sub)
+        public bool removeSubscription(Publication sub)
         {
             int index = -1;
             // check if sub exists
@@ -61,24 +64,19 @@ namespace newspaper_delivery_system
         }
 
         // display all subscriptions
-        public string getAllSubscriptions()
+        public List<Publication> getAllSubscriptions()
         {
-            string allSubs = ""; // hold all subscriptions
 
             if (subscriptions.Count == 0)
-                return "No subscriptions";
+                return null;
 
-            foreach(string sub in subscriptions)
-            {
-                allSubs += "\t" + sub + "\n";
-            }
-            return allSubs;
+            return subscriptions;
         }
 
         // toString
         public override string ToString()
         {
-            return base.ToString() + "\nSuspended: " + suspended + "\nSubscriptions: \n" + getAllSubscriptions();
+            return base.ToString() + " Suspended: " + suspended;
         }
     }
 }

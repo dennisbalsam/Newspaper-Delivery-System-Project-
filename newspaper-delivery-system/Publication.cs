@@ -11,6 +11,8 @@ namespace newspaper_delivery_system
     {
         string name;
         double price;
+        int numSubs = 0;
+        double totalOwed = 0.0;
 
         // default constructor
         public Publication(string _name = "NO_NAME", double _price = 0)
@@ -18,7 +20,16 @@ namespace newspaper_delivery_system
             name = _name;
             price = _price;
         }
-
+        //function to increment amount of subs to publications
+        public void incrementSubs()
+        {
+            numSubs++;
+        }
+        // function to increment total owed between all subs of publication
+        public void incrementOwed()
+        {
+            totalOwed = price * numSubs;
+        }
         // getters and setters
         public string Name
         {
@@ -26,15 +37,25 @@ namespace newspaper_delivery_system
             set { name = value; }
         }
 
+        public int NumSubs
+        {
+            get { return numSubs; }
+            set { numSubs = value; }
+        }
         public double Price
         {
             get { return price; }
             set { price = value; }
         }
+        public double TotalOwed
+        {
+            get { return totalOwed; }
+            set { totalOwed = value; }
+        }
 
         public override string ToString()
         {
-            return "Name: " + name + "\nPrice: $" + Convert.ToString(price);
+            return "Name: " + name + " --- Price: $" + Convert.ToString(price);
         }
 
     }

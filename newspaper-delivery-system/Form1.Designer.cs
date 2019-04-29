@@ -35,6 +35,8 @@
             this.dataList = new System.Windows.Forms.ListBox();
             this.datalist2 = new System.Windows.Forms.ListBox();
             this.option1 = new System.Windows.Forms.Button();
+            this.addSub = new System.Windows.Forms.Button();
+            this.option2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -42,9 +44,10 @@
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Household Info",
+            "Publications",
             "Carriers",
-            "Publications"});
+            "HouseHold Info",
+            "Billing"});
             this.comboBox1.Location = new System.Drawing.Point(261, 107);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(762, 21);
@@ -86,11 +89,11 @@
             // 
             // dataList
             // 
-            this.dataList.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.dataList.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataList.FormattingEnabled = true;
             this.dataList.Location = new System.Drawing.Point(69, 234);
             this.dataList.Name = "dataList";
-            this.dataList.Size = new System.Drawing.Size(671, 173);
+            this.dataList.Size = new System.Drawing.Size(707, 173);
             this.dataList.TabIndex = 4;
             this.dataList.Visible = false;
             this.dataList.SelectedIndexChanged += new System.EventHandler(this.dataList_SelectedIndexChanged);
@@ -100,27 +103,51 @@
             this.datalist2.FormattingEnabled = true;
             this.datalist2.Location = new System.Drawing.Point(69, 446);
             this.datalist2.Name = "datalist2";
-            this.datalist2.Size = new System.Drawing.Size(671, 173);
+            this.datalist2.Size = new System.Drawing.Size(707, 173);
             this.datalist2.TabIndex = 5;
             this.datalist2.Visible = false;
             this.datalist2.SelectedIndexChanged += new System.EventHandler(this.datalist2_SelectedIndexChanged);
             // 
             // option1
             // 
-            this.option1.Location = new System.Drawing.Point(915, 234);
+            this.option1.Location = new System.Drawing.Point(964, 234);
             this.option1.Name = "option1";
             this.option1.Size = new System.Drawing.Size(149, 52);
             this.option1.TabIndex = 6;
-            this.option1.Text = "button2";
+            this.option1.Text = "Add New Subscription";
             this.option1.UseVisualStyleBackColor = true;
             this.option1.Visible = false;
             this.option1.Click += new System.EventHandler(this.option1_Click);
+            // 
+            // addSub
+            // 
+            this.addSub.Location = new System.Drawing.Point(782, 403);
+            this.addSub.Name = "addSub";
+            this.addSub.Size = new System.Drawing.Size(153, 44);
+            this.addSub.TabIndex = 7;
+            this.addSub.Text = "Add Subscirption";
+            this.addSub.UseVisualStyleBackColor = true;
+            this.addSub.Visible = false;
+            this.addSub.Click += new System.EventHandler(this.addSub_Click);
+            // 
+            // option2
+            // 
+            this.option2.Location = new System.Drawing.Point(964, 332);
+            this.option2.Name = "option2";
+            this.option2.Size = new System.Drawing.Size(149, 52);
+            this.option2.TabIndex = 8;
+            this.option2.Text = "Display House\' Sub List";
+            this.option2.UseVisualStyleBackColor = true;
+            this.option2.Visible = false;
+            this.option2.Click += new System.EventHandler(this.option2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 669);
+            this.Controls.Add(this.option2);
+            this.Controls.Add(this.addSub);
             this.Controls.Add(this.option1);
             this.Controls.Add(this.datalist2);
             this.Controls.Add(this.dataList);
@@ -145,6 +172,8 @@
         private System.Windows.Forms.ListBox dataList;
         private System.Windows.Forms.ListBox datalist2;
         private System.Windows.Forms.Button option1;
+        private System.Windows.Forms.Button addSub;
+        private System.Windows.Forms.Button option2;
     }
 }
 
