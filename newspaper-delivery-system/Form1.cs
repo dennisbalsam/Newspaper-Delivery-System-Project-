@@ -12,6 +12,12 @@ namespace newspaper_delivery_system
 {
     public partial class Form1 : Form
     {
+        static string path = @"..\..\..\";
+
+        List<Household> households = DataHandler.getHouseholdData(path + "households.csv");
+        List<Carrier> carriers = DataHandler.getCarrierData(path + "carriers.csv");
+        List<Publication> publications = DataHandler.getPublicationData(path + "publications.csv");
+
         public Form1()
         {
             InitializeComponent();
@@ -66,9 +72,6 @@ namespace newspaper_delivery_system
         //Display all households
         public void DisplayallHouseinfo(object sender, EventArgs e)
         {
-
-            string path = @"..\..\..\";
-            List<Household> households = DataHandler.getHouseholdData(path + "households.csv");
             dataList.DataSource = households;
             dataList.Visible = true;
 
@@ -76,21 +79,15 @@ namespace newspaper_delivery_system
         //Display all carriers
         public void DisplayallCarrierinfo(object sender, EventArgs e)
         {
-            string path = @"..\..\..\";
-            List<Carrier> carriers = DataHandler.getCarrierData(path + "carriers.csv");
             dataList.DataSource = carriers;
             dataList.Visible = true;
-
         }
 
         //Display all publications
         public void DisplayallPublicationinfo(object sender, EventArgs e)
         {
-            string path = @"..\..\..\";
-            List<Publication> publications = DataHandler.getPublicationData(path + "publications.csv");
             dataList.DataSource = publications;
             dataList.Visible = true;
-
         }
 
         //All form controls
