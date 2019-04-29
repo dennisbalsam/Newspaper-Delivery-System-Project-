@@ -16,5 +16,13 @@ namespace newspaper_delivery_system
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex.ToString() == "Household Info")
+            {
+
+            }
+        }
     }
 }
