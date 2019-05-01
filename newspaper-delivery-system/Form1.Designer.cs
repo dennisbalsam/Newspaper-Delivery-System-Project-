@@ -38,6 +38,7 @@
             this.subOption = new System.Windows.Forms.Button();
             this.option2 = new System.Windows.Forms.Button();
             this.option3 = new System.Windows.Forms.Button();
+            this.removebtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -122,7 +123,7 @@
             // 
             // subOption
             // 
-            this.subOption.Location = new System.Drawing.Point(782, 403);
+            this.subOption.Location = new System.Drawing.Point(782, 374);
             this.subOption.Name = "subOption";
             this.subOption.Size = new System.Drawing.Size(153, 44);
             this.subOption.TabIndex = 7;
@@ -153,11 +154,22 @@
             this.option3.Visible = false;
             this.option3.Click += new System.EventHandler(this.option3_Click);
             // 
+            // removebtn
+            // 
+            this.removebtn.Location = new System.Drawing.Point(782, 454);
+            this.removebtn.Name = "removebtn";
+            this.removebtn.Size = new System.Drawing.Size(153, 44);
+            this.removebtn.TabIndex = 10;
+            this.removebtn.Text = "Remove Subscirption";
+            this.removebtn.UseVisualStyleBackColor = true;
+            this.removebtn.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 669);
+            this.Controls.Add(this.removebtn);
             this.Controls.Add(this.option3);
             this.Controls.Add(this.option2);
             this.Controls.Add(this.subOption);
@@ -188,6 +200,7 @@
         private System.Windows.Forms.Button subOption;
         private System.Windows.Forms.Button option2;
         private System.Windows.Forms.Button option3;
+        private System.Windows.Forms.Button removebtn;
     }
 }
 

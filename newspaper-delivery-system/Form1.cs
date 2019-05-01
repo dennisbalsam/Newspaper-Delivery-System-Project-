@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace newspaper_delivery_system
 {
@@ -20,9 +21,12 @@ namespace newspaper_delivery_system
 
         BindingSource bs = new BindingSource();
         BindingSource subs = new BindingSource();
+        
         public Form1()
         {
             InitializeComponent();
+            subOption.Click += new EventHandler(addSubscription);
+            removebtn.Click += new EventHandler(RemoveSubscirption);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,8 +62,6 @@ namespace newspaper_delivery_system
 
 
 
-
-
         }
         //Carrier Info Function
         public void CarrierInfo()
@@ -89,8 +91,9 @@ namespace newspaper_delivery_system
             datalist2.Visible = true;
             datalist2.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
             subOption.Text = "Remove Subscription";
-            subOption.Visible = true;
-            subOption.Click += new EventHandler(RemoveSubscirption);
+            subOption.Visible = false;
+            removebtn.Visible = true;
+
   
         }
         //function of button to actually remove the publication
@@ -113,7 +116,9 @@ namespace newspaper_delivery_system
             subOption.Visible = true;
             datalist2.DataSource = publications;
             datalist2.Visible = true;
-            subOption.Click += new EventHandler(addSubscription);
+
+
+
 
         }
         //Button to add the subscirption to a house hold
@@ -121,6 +126,7 @@ namespace newspaper_delivery_system
         { 
             //Add the selected publication to the house
             households.ElementAt(dataList.SelectedIndex).addSubscription(publications.ElementAt(datalist2.SelectedIndex));
+            
         }
         // -----------------------------------------------------------------------------------------------
 
@@ -128,6 +134,8 @@ namespace newspaper_delivery_system
         //Display current houses subscription LIST  
         public void DisplaySubs(object sender, EventArgs e)
         {
+
+            
             subOption.Visible = false;
             datalist2.Visible = true;
             subs.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
