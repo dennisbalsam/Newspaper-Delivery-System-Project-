@@ -51,7 +51,7 @@ namespace newspaper_delivery_system
         // remove subscription from list
         public bool removeSubscription(int index)
         {
-            // new remove method
+
             int originalCount = subscriptions.Count;
             subscriptions.RemoveAt(index);
             int newCount = subscriptions.Count;

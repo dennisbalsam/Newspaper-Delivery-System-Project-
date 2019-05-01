@@ -35,8 +35,9 @@
             this.dataList = new System.Windows.Forms.ListBox();
             this.datalist2 = new System.Windows.Forms.ListBox();
             this.option1 = new System.Windows.Forms.Button();
-            this.addSub = new System.Windows.Forms.Button();
+            this.subOption = new System.Windows.Forms.Button();
             this.option2 = new System.Windows.Forms.Button();
+            this.option3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -119,16 +120,16 @@
             this.option1.Visible = false;
             this.option1.Click += new System.EventHandler(this.option1_Click);
             // 
-            // addSub
+            // subOption
             // 
-            this.addSub.Location = new System.Drawing.Point(782, 403);
-            this.addSub.Name = "addSub";
-            this.addSub.Size = new System.Drawing.Size(153, 44);
-            this.addSub.TabIndex = 7;
-            this.addSub.Text = "Add Subscirption";
-            this.addSub.UseVisualStyleBackColor = true;
-            this.addSub.Visible = false;
-            this.addSub.Click += new System.EventHandler(this.addSub_Click);
+            this.subOption.Location = new System.Drawing.Point(782, 403);
+            this.subOption.Name = "subOption";
+            this.subOption.Size = new System.Drawing.Size(153, 44);
+            this.subOption.TabIndex = 7;
+            this.subOption.Text = "Add Subscirption";
+            this.subOption.UseVisualStyleBackColor = true;
+            this.subOption.Visible = false;
+            this.subOption.Click += new System.EventHandler(this.addSub_Click);
             // 
             // option2
             // 
@@ -141,13 +142,25 @@
             this.option2.Visible = false;
             this.option2.Click += new System.EventHandler(this.option2_Click);
             // 
+            // option3
+            // 
+            this.option3.Location = new System.Drawing.Point(964, 446);
+            this.option3.Name = "option3";
+            this.option3.Size = new System.Drawing.Size(149, 52);
+            this.option3.TabIndex = 9;
+            this.option3.Text = "Remove a Subscription";
+            this.option3.UseVisualStyleBackColor = true;
+            this.option3.Visible = false;
+            this.option3.Click += new System.EventHandler(this.option3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 669);
+            this.Controls.Add(this.option3);
             this.Controls.Add(this.option2);
-            this.Controls.Add(this.addSub);
+            this.Controls.Add(this.subOption);
             this.Controls.Add(this.option1);
             this.Controls.Add(this.datalist2);
             this.Controls.Add(this.dataList);
@@ -172,8 +185,9 @@
         private System.Windows.Forms.ListBox dataList;
         private System.Windows.Forms.ListBox datalist2;
         private System.Windows.Forms.Button option1;
-        private System.Windows.Forms.Button addSub;
+        private System.Windows.Forms.Button subOption;
         private System.Windows.Forms.Button option2;
+        private System.Windows.Forms.Button option3;
     }
 }
 
