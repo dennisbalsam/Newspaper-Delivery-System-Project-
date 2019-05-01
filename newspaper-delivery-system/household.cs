@@ -49,16 +49,14 @@ namespace newspaper_delivery_system
         }
 
         // remove subscription from list
-        public bool removeSubscription(Publication sub)
+        public bool removeSubscription(int index)
         {
-            int index = -1;
-            // check if sub exists
-            if (hasSubscription(sub))
-            {
-                index = subscriptions.FindIndex(item => item == sub);
-                subscriptions.RemoveAt(index);
+            // new remove method
+            int originalCount = subscriptions.Count;
+            subscriptions.RemoveAt(index);
+            int newCount = subscriptions.Count;
+            if (originalCount > newCount)
                 return true;
-            }
             else
                 return false;
         }
