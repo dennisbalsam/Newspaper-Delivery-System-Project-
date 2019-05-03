@@ -1,6 +1,6 @@
 ﻿namespace newspaper_delivery_system
 {
-    partial class Form1
+    partial class message
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,10 @@
             this.subOption = new System.Windows.Forms.Button();
             this.option2 = new System.Windows.Forms.Button();
             this.option3 = new System.Windows.Forms.Button();
-            this.removebtn = new System.Windows.Forms.Button();
+            this.messageBox = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.option4 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -93,7 +96,7 @@
             // 
             this.dataList.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataList.FormattingEnabled = true;
-            this.dataList.Location = new System.Drawing.Point(69, 234);
+            this.dataList.Location = new System.Drawing.Point(132, 223);
             this.dataList.Name = "dataList";
             this.dataList.Size = new System.Drawing.Size(707, 173);
             this.dataList.TabIndex = 4;
@@ -103,7 +106,7 @@
             // datalist2
             // 
             this.datalist2.FormattingEnabled = true;
-            this.datalist2.Location = new System.Drawing.Point(69, 446);
+            this.datalist2.Location = new System.Drawing.Point(132, 512);
             this.datalist2.Name = "datalist2";
             this.datalist2.Size = new System.Drawing.Size(707, 173);
             this.datalist2.TabIndex = 5;
@@ -112,7 +115,7 @@
             // 
             // option1
             // 
-            this.option1.Location = new System.Drawing.Point(964, 234);
+            this.option1.Location = new System.Drawing.Point(1040, 210);
             this.option1.Name = "option1";
             this.option1.Size = new System.Drawing.Size(149, 52);
             this.option1.TabIndex = 6;
@@ -123,9 +126,9 @@
             // 
             // subOption
             // 
-            this.subOption.Location = new System.Drawing.Point(782, 374);
+            this.subOption.Location = new System.Drawing.Point(405, 434);
             this.subOption.Name = "subOption";
-            this.subOption.Size = new System.Drawing.Size(153, 44);
+            this.subOption.Size = new System.Drawing.Size(153, 50);
             this.subOption.TabIndex = 7;
             this.subOption.Text = "Add Subscirption";
             this.subOption.UseVisualStyleBackColor = true;
@@ -134,7 +137,7 @@
             // 
             // option2
             // 
-            this.option2.Location = new System.Drawing.Point(964, 332);
+            this.option2.Location = new System.Drawing.Point(1040, 500);
             this.option2.Name = "option2";
             this.option2.Size = new System.Drawing.Size(149, 52);
             this.option2.TabIndex = 8;
@@ -145,7 +148,7 @@
             // 
             // option3
             // 
-            this.option3.Location = new System.Drawing.Point(964, 446);
+            this.option3.Location = new System.Drawing.Point(1040, 355);
             this.option3.Name = "option3";
             this.option3.Size = new System.Drawing.Size(149, 52);
             this.option3.TabIndex = 9;
@@ -154,22 +157,45 @@
             this.option3.Visible = false;
             this.option3.Click += new System.EventHandler(this.option3_Click);
             // 
-            // removebtn
+            // messageBox
             // 
-            this.removebtn.Location = new System.Drawing.Point(782, 454);
-            this.removebtn.Name = "removebtn";
-            this.removebtn.Size = new System.Drawing.Size(153, 44);
-            this.removebtn.TabIndex = 10;
-            this.removebtn.Text = "Remove Subscirption";
-            this.removebtn.UseVisualStyleBackColor = true;
-            this.removebtn.Visible = false;
+            this.messageBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.messageBox.Location = new System.Drawing.Point(-1, 14);
+            this.messageBox.Name = "messageBox";
+            this.messageBox.Size = new System.Drawing.Size(321, 23);
+            this.messageBox.TabIndex = 10;
+            this.messageBox.Text = "label1";
+            this.messageBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.messageBox.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Form1
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.messageBox);
+            this.panel1.Location = new System.Drawing.Point(563, 718);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(321, 55);
+            this.panel1.TabIndex = 11;
+            this.panel1.Visible = false;
+            // 
+            // option4
+            // 
+            this.option4.Location = new System.Drawing.Point(1040, 645);
+            this.option4.Name = "option4";
+            this.option4.Size = new System.Drawing.Size(149, 52);
+            this.option4.TabIndex = 12;
+            this.option4.Text = "Has Subscription";
+            this.option4.UseVisualStyleBackColor = true;
+            this.option4.Visible = false;
+            // 
+            // message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 669);
-            this.Controls.Add(this.removebtn);
+            this.ClientSize = new System.Drawing.Size(1284, 800);
+            this.Controls.Add(this.option4);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.option3);
             this.Controls.Add(this.option2);
             this.Controls.Add(this.subOption);
@@ -180,9 +206,10 @@
             this.Controls.Add(this.welcomelabel2);
             this.Controls.Add(this.Welcomelabel);
             this.Controls.Add(this.comboBox1);
-            this.Name = "Form1";
+            this.Name = "message";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,7 +227,9 @@
         private System.Windows.Forms.Button subOption;
         private System.Windows.Forms.Button option2;
         private System.Windows.Forms.Button option3;
-        private System.Windows.Forms.Button removebtn;
+        private System.Windows.Forms.Label messageBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button option4;
     }
 }
 

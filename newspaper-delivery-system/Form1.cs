@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace newspaper_delivery_system
 {
-    public partial class Form1 : Form
+    public partial class message : Form
     {
         static string path = @"..\..\..\";
 
@@ -22,11 +22,10 @@ namespace newspaper_delivery_system
         BindingSource bs = new BindingSource();
         BindingSource subs = new BindingSource();
         
-        public Form1()
+        public message()
         {
             InitializeComponent();
-            subOption.Click += new EventHandler(addSubscription);
-            removebtn.Click += new EventHandler(RemoveSubscirption);
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,9 +55,11 @@ namespace newspaper_delivery_system
             option1.Visible = true;
             option2.Visible = true;
             option3.Visible = true;
+            option4.Visible = true;
             option1.Click += new EventHandler(AddNewSubscription);
             option2.Click += new EventHandler(DisplaySubs);
             option3.Click += new EventHandler(RemoveButton);
+            option4.Click += new EventHandler(HasSubscriptionButton);
 
 
 
@@ -66,6 +67,9 @@ namespace newspaper_delivery_system
         //Carrier Info Function
         public void CarrierInfo()
         {
+            option1.Click -= new EventHandler(AddNewSubscription);
+            option2.Click -= new EventHandler(DisplaySubs);
+            option3.Click -= new EventHandler(RemoveButton);
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
@@ -76,6 +80,9 @@ namespace newspaper_delivery_system
         //Publication Info Function
         public void HouseholdInfo()
         {
+            option1.Click -= new EventHandler(AddNewSubscription);
+            option2.Click -= new EventHandler(DisplaySubs);
+            option3.Click -= new EventHandler(RemoveButton);
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
@@ -87,35 +94,80 @@ namespace newspaper_delivery_system
         //function called when remove sub button is clicked
         public void RemoveButton(object sender, EventArgs e)
         {
-
+            panel1.Visible = false;
             datalist2.Visible = true;
             datalist2.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
             subOption.Text = "Remove Subscription";
-            subOption.Visible = false;
-            removebtn.Visible = true;
+            subOption.Visible = true;
+            //Reset button event handling
+            subOption.Click -= new EventHandler(addSubscription);
+            subOption.Click -= new EventHandler(RemoveSubscirption);
+            subOption.Click += new EventHandler(RemoveSubscirption);
 
-  
         }
         //function of button to actually remove the publication
         public void RemoveSubscirption(object sender, EventArgs e)
         {
-            bool success = households.ElementAt(dataList.SelectedIndex).removeSubscription(datalist2.SelectedIndex);
-            option1.Text = success.ToString();
+            //call method to remove subscription
+            households.ElementAt(dataList.SelectedIndex).removeSubscription(datalist2.SelectedIndex);
+            //Reset the list of house's subscriptions
             subs.ResetBindings(false);
+            //Call the display subscriptions method
             DisplaySubs();
-            
+            panel1.Visible = true;
+            //Change messages text
+            messageBox.Text = "Publication removed from House's subscriptions";
+  
         }
         //----------------------------------------------------------------------------------------------
+        //-----------------------------------------Has subscription method GUI----------------------------------
+        public void HasSubscriptionButton(object sender, EventArgs e)
+        {
+            //Make message not visible and change text
+            panel1.Visible = false;
+            subOption.Text = "Check for Subscription";
+            //Reset button event handling
+            subOption.Click -= new EventHandler(addSubscription);
+            subOption.Click -= new EventHandler(RemoveSubscirption);
+            subOption.Click -= new EventHandler(CheckforSubscription);
+            subOption.Click += new EventHandler(CheckforSubscription);
+            subOption.Visible = true;
+            //Output the publication data list for selection to be made
+            datalist2.DataSource = publications;
+            datalist2.Visible = true;
 
+        }
+        //Button that actually checks if the house the selected subscription
+        public void CheckforSubscription(object sender, EventArgs e)
+        {
+            
+            if (households.ElementAt(dataList.SelectedIndex).hasSubscription(publications.ElementAt(datalist2.SelectedIndex)))
+                messageBox.Text = "This house has the subscription: " + publications.ElementAt(datalist2.SelectedIndex).Name;
+            else
+                messageBox.Text = "This house does not have the subscription: " + publications.ElementAt(datalist2.SelectedIndex).Name;
+            panel1.Visible = true;
+        }
+
+
+
+
+
+
+        //--------------------------------------------------------------------------------------------------------
 
         // ------------------------------------------ADD METHODS GUI----------------------------------------
         //show list of publications to Add a Subscription GUI Function
         public void AddNewSubscription(object sender, EventArgs e)
         {
+            panel1.Visible = false;
             subOption.Text = "Add Subscription";
             subOption.Visible = true;
             datalist2.DataSource = publications;
             datalist2.Visible = true;
+            //Reset button event handling
+            subOption.Click -= new EventHandler(RemoveSubscirption);
+            subOption.Click -= new EventHandler(addSubscription);
+            subOption.Click += new EventHandler(addSubscription);
 
 
 
@@ -123,10 +175,19 @@ namespace newspaper_delivery_system
         }
         //Button to add the subscirption to a house hold
         public void addSubscription(object sender, EventArgs e)
-        { 
+        {
             //Add the selected publication to the house
-            households.ElementAt(dataList.SelectedIndex).addSubscription(publications.ElementAt(datalist2.SelectedIndex));
-            
+            //Check if the house already has this subscription
+            if (households.ElementAt(dataList.SelectedIndex).hasSubscription(publications.ElementAt(datalist2.SelectedIndex)) == false)
+            {
+                households.ElementAt(dataList.SelectedIndex).addSubscription(publications.ElementAt(datalist2.SelectedIndex));
+                messageBox.Text = "Publication added to House's Subscriptions";
+                panel1.Visible = true;
+
+            }
+            //If the house has the subscription then output it and don't add
+            else
+               messageBox.Text = "Has magazine already";
         }
         // -----------------------------------------------------------------------------------------------
 
@@ -135,7 +196,7 @@ namespace newspaper_delivery_system
         public void DisplaySubs(object sender, EventArgs e)
         {
 
-            
+            panel1.Visible = false;
             subOption.Visible = false;
             datalist2.Visible = true;
             subs.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
@@ -224,6 +285,15 @@ namespace newspaper_delivery_system
         }
 
         private void option3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+                    }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -39,7 +39,7 @@ namespace newspaper_delivery_system
         // toString
         public override string ToString()
         {
-            return "Name: " + name + "\nAddress: " + address + "\nPhone: " + phone;
+            return "Name:  " + name + "-- Address: " + address + "-- Phone: " + phone + "--";
         }
     }
 }
