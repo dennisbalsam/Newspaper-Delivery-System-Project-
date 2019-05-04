@@ -31,7 +31,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Welcomelabel = new System.Windows.Forms.Label();
             this.welcomelabel2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.dataList = new System.Windows.Forms.ListBox();
             this.datalist2 = new System.Windows.Forms.ListBox();
             this.option1 = new System.Windows.Forms.Button();
@@ -57,6 +56,10 @@
             this.option11 = new System.Windows.Forms.Button();
             this.option10 = new System.Windows.Forms.Button();
             this.option9 = new System.Windows.Forms.Button();
+            this.billingButton = new System.Windows.Forms.Button();
+            this.moneyLabel = new System.Windows.Forms.Label();
+            this.moneyTextbox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,17 +99,6 @@
             this.welcomelabel2.TabIndex = 2;
             this.welcomelabel2.Text = "Please select an option";
             this.welcomelabel2.Click += new System.EventHandler(this.welcomelabel2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(559, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 42);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataList
             // 
@@ -152,7 +144,7 @@
             // 
             // option2
             // 
-            this.option2.Location = new System.Drawing.Point(1040, 500);
+            this.option2.Location = new System.Drawing.Point(1040, 645);
             this.option2.Name = "option2";
             this.option2.Size = new System.Drawing.Size(149, 52);
             this.option2.TabIndex = 8;
@@ -196,7 +188,7 @@
             // 
             // option4
             // 
-            this.option4.Location = new System.Drawing.Point(1040, 645);
+            this.option4.Location = new System.Drawing.Point(1040, 500);
             this.option4.Name = "option4";
             this.option4.Size = new System.Drawing.Size(149, 52);
             this.option4.TabIndex = 12;
@@ -371,11 +363,52 @@
             this.option9.UseVisualStyleBackColor = true;
             this.option9.Visible = false;
             // 
+            // billingButton
+            // 
+            this.billingButton.Location = new System.Drawing.Point(88, 430);
+            this.billingButton.Name = "billingButton";
+            this.billingButton.Size = new System.Drawing.Size(153, 50);
+            this.billingButton.TabIndex = 29;
+            this.billingButton.UseVisualStyleBackColor = true;
+            this.billingButton.Visible = false;
+            // 
+            // moneyLabel
+            // 
+            this.moneyLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.moneyLabel.Location = new System.Drawing.Point(870, 446);
+            this.moneyLabel.Name = "moneyLabel";
+            this.moneyLabel.Size = new System.Drawing.Size(187, 23);
+            this.moneyLabel.TabIndex = 30;
+            this.moneyLabel.Text = "Input Amount Paid:";
+            this.moneyLabel.Visible = false;
+            // 
+            // moneyTextbox
+            // 
+            this.moneyTextbox.Location = new System.Drawing.Point(1066, 446);
+            this.moneyTextbox.Name = "moneyTextbox";
+            this.moneyTextbox.Size = new System.Drawing.Size(206, 20);
+            this.moneyTextbox.TabIndex = 31;
+            this.moneyTextbox.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(559, 154);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 42);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 800);
+            this.Controls.Add(this.moneyTextbox);
+            this.Controls.Add(this.moneyLabel);
+            this.Controls.Add(this.billingButton);
             this.Controls.Add(this.option9);
             this.Controls.Add(this.option10);
             this.Controls.Add(this.option11);
@@ -418,7 +451,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label Welcomelabel;
         private System.Windows.Forms.Label welcomelabel2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox dataList;
         private System.Windows.Forms.ListBox datalist2;
         private System.Windows.Forms.Button option1;
@@ -444,6 +476,10 @@
         private System.Windows.Forms.Button option11;
         private System.Windows.Forms.Button option10;
         private System.Windows.Forms.Button option9;
+        private System.Windows.Forms.Button billingButton;
+        private System.Windows.Forms.Label moneyLabel;
+        private System.Windows.Forms.TextBox moneyTextbox;
+        private System.Windows.Forms.Button button1;
     }
 }
 

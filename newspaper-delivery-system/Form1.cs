@@ -43,22 +43,48 @@ namespace newspaper_delivery_system
             {
                 PublicationInfo();
             }
+            else if (comboBox1.SelectedItem.ToString() == "Billing")
+            {
+                BillingInfo();
+            }
         }
+
+        // Billing info function
+        public void BillingInfo()
+        {
+            PublicationsButtonsNotVisible();
+            CarrierButtonsNotVisible();
+            HouseholdButtonsNotVisible();
+            
+            DisplayallHouseinfo();
+            dataList.Visible = true;
+            welcomelabel2.Visible = false;
+            Welcomelabel.Visible = false;
+           
+            option2.Location = new Point(435, 430);
+            option2.Click += new EventHandler(DisplaySubs);
+            button1.Visible = false;
+            billingButton.Location = new Point(261, 430);
+            billingButton.Text = "View Total Owed";
+            billingButton.Click += new EventHandler(viewBill);
+
+
+
+        }
+
         // Household info function
         public void PublicationInfo()
         {
             PublicationsButtonsVisible();
             CarrierButtonsNotVisible();
+            BillingButtonsNotVisible();
             HouseholdButtonsNotVisible();
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
-            button1.Visible = true;
-            button1.Text = "Display all Households";
-            button1.Click += new EventHandler(DisplayallHouseinfo);
+            DisplayallHouseinfo();
             PublicationsButtonsVisible();
             option1.Click += new EventHandler(AddNewSubscription);
-            option2.Click += new EventHandler(DisplaySubs);
             option3.Click += new EventHandler(RemoveButton);
             option4.Click += new EventHandler(HasSubscriptionButton);
 
@@ -70,15 +96,14 @@ namespace newspaper_delivery_system
         {
             PublicationsButtonsNotVisible();
             HouseholdButtonsNotVisible();
+            BillingButtonsNotVisible();
             CarrierButtonsVisible();
-            button1.Text = "Display all Carriers";
-            button1.Visible = true;
-            button1.Click += new EventHandler(DisplayallCarrierinfo);
+            DisplayallCarrierinfo();
             option5.Click += new EventHandler(CarrierRoutesButton);
             option6.Click += new EventHandler(AddCarrierButton);
             option7.Click += new EventHandler(RemoveCarrierButton);
             option8.Click += new EventHandler(ModifyCarrierButton);
-            dataList.Visible = false;
+            dataList.Visible = true;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
 
@@ -90,10 +115,9 @@ namespace newspaper_delivery_system
             PublicationsButtonsNotVisible();
             CarrierButtonsNotVisible();
             HouseholdButtonsVisible();
-            button1.Text = "Display all HouseHolds";
-            button1.Visible = true;
-            button1.Click += new EventHandler(DisplayallHouseinfo);
-            dataList.Visible = false;
+            BillingButtonsNotVisible();
+            DisplayallHouseinfo();
+            dataList.Visible = true;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
             option9.Click += new EventHandler(AddHouseholdButton);
@@ -221,10 +245,7 @@ namespace newspaper_delivery_system
             textBox1.Visible = false;
             textBox2.Visible = false;
             textBox3.Visible = false;
-            //Make display carriers visible
-            button1.Click += new EventHandler(DisplayallCarrierinfo);
-            button1.Visible = true;
-            button1.Text = "Display all Carriers";
+           
             // add event handler 
             carrierSubOption.Click -= new EventHandler(AddCarrier);
             carrierSubOption.Click -= new EventHandler(RemoveCarrier);
@@ -256,7 +277,7 @@ namespace newspaper_delivery_system
             textBox3.ResetText();
             //Hide the carrier list
             button1.Visible = false;
-            dataList.Visible = false;
+            
             datalist2.Visible = false;
 
             //make text boxes visible for data entry
@@ -320,8 +341,7 @@ namespace newspaper_delivery_system
             panel1.Visible = false;
             //change location of button
             carrierSubOption.Location = new Point(435, 430);
-            //make button visible
-            button1.Visible = true;
+            
             //make text boxes not visible 
             nameLabel.Visible = false;
             phoneLabel.Visible = false;
@@ -441,8 +461,7 @@ namespace newspaper_delivery_system
             textBox2.ResetText();
             textBox3.ResetText();
             //Hide the carrier list
-            button1.Visible = false;
-            dataList.Visible = false;
+            
             datalist2.Visible = false;
 
             //make text boxes visible for data entry
@@ -505,8 +524,7 @@ namespace newspaper_delivery_system
             panel1.Visible = false;
             //change location of button
             householdSubOption.Location = new Point(435, 430);
-            //make button visible
-            button1.Visible = true;
+         
             //make text boxes not visible 
             nameLabel.Visible = false;
             phoneLabel.Visible = false;
@@ -615,8 +633,7 @@ namespace newspaper_delivery_system
             panel1.Visible = false;
             //change location of button
             householdSubOption.Location = new Point(435, 430);
-            //make button visible
-            button1.Visible = true;
+            
             //make text boxes not visible 
             nameLabel.Visible = false;
             phoneLabel.Visible = false;
@@ -671,7 +688,16 @@ namespace newspaper_delivery_system
 
 
         //-------------------------------------------------------------End household functions------------------------------------------------------
-    
+        //-------------------------------------------------------------Billing section----------------------------------------------------------
+        public void viewBill(object sender, EventArgs e)
+        {
+            messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: " + households.ElementAt(dataList.SelectedIndex).TotalOwed;
+            panel1.Visible = true;
+        }
+
+
+
+        //---------------------------------------------------------------------------------------------------------------------------------------
         // -------------------------------DISPLAY LIST FUNCTIONS---------------------------------------------
         //Display current houses subscription LIST  
         public void DisplaySubs(object sender, EventArgs e)
@@ -741,7 +767,6 @@ namespace newspaper_delivery_system
         {
             //Make the buttons visible
             option1.Visible = true;
-            option2.Visible = true;
             option3.Visible = true;
             option4.Visible = true;
         }
@@ -773,7 +798,8 @@ namespace newspaper_delivery_system
             option11.Location = new Point(1040, 500);
             option12.Location = new Point(1040, 645);
         }
-
+        
+        
 
 
         //Functions to make each Sections buttons not visible
@@ -822,7 +848,12 @@ namespace newspaper_delivery_system
             dataList.Visible = false;
             datalist2.Visible = false;
         }
-
+        //Billing buttons
+        public void BillingButtonsNotVisible()
+        {
+            billingButton.Visible = false;
+            option2.Visible = false;
+        }
 
         //All form controls
         private void welcomelabel2_Click(object sender, EventArgs e)
