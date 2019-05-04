@@ -60,7 +60,7 @@ namespace newspaper_delivery_system
 
         public override string ToString()
         {
-            return "Name: " + name + " --- Price: $" + Convert.ToString(price);
+            return "Name: " + name + String.Format(" --- Price: $  {0:C}", price);
         }
 
     }

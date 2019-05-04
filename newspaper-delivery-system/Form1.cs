@@ -155,8 +155,7 @@ namespace newspaper_delivery_system
         public void RemoveButton(object sender, EventArgs e)
         {
             panel1.Visible = false;
-            datalist2.Visible = true;
-            datalist2.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
+       
             subOption.Text = "Remove Subscription";
             
             //Reset button event handling
@@ -167,6 +166,7 @@ namespace newspaper_delivery_system
 
 
             dataList.MouseClick += new MouseEventHandler(CheckHouse);
+
             
         }
         //function of button to actually remove the publication
@@ -255,7 +255,7 @@ namespace newspaper_delivery_system
 
 
         }
-        //Button to add the subscirption to a house hold
+        //Button to add the subscrption to a house hold
         public void addSubscription(object sender, EventArgs e)
         {
             //Add the selected publication to the house
@@ -735,8 +735,8 @@ namespace newspaper_delivery_system
         public void viewBill(object sender, EventArgs e)
         {
             //Output amount of subs, and money owed for selected house
-            messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: " 
-                    + households.ElementAt(dataList.SelectedIndex).TotalOwed;
+            messageBox.Text = "Number of Subscriptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString()  
+                    + String.Format(" ---- Total Owed:  {0:C}", households.ElementAt(dataList.SelectedIndex).TotalOwed); 
             // Make buttons visible
             panel1.Visible = true;
             moneyLabel.Visible = true;
@@ -765,8 +765,8 @@ namespace newspaper_delivery_system
                     }
                     households.ElementAt(dataList.SelectedIndex).TotalOwed -= amount;
                     //Update Info
-                    messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: "
-                     + households.ElementAt(dataList.SelectedIndex).TotalOwed;
+                    messageBox.Text = "Number of Subscriptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString()
+                        + String.Format(" ---- Total Owed:  {0:C}", households.ElementAt(dataList.SelectedIndex).TotalOwed);
                     //Get amount
                     moneyTextbox.ResetText();
                 }
@@ -779,8 +779,9 @@ namespace newspaper_delivery_system
                 if (households.ElementAt(dataList.SelectedIndex).TotalOwed < 0)
                 {
                     households.ElementAt(dataList.SelectedIndex).TotalOwed = 0.00;
-                    messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: "
-                    + households.ElementAt(dataList.SelectedIndex).TotalOwed + " ---- Change due to House: " + change;
+                    messageBox.Text = "Number of Subscriptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() 
+                        + String.Format(" ---- Total Owed:  {0:C}", households.ElementAt(dataList.SelectedIndex).TotalOwed 
+                        + String.Format(" ---- Change due to House:   {0:C}",  change));
                 }
             }
         }
@@ -791,7 +792,7 @@ namespace newspaper_delivery_system
         public void DisplaySummary(object sender, EventArgs e)
         {
             //output summary message
-            messageBox.Text = "Number of People Subscirbed: " + publications.ElementAt(dataList.SelectedIndex).NumSubs + " ----- Total Amount Owed: "
+            messageBox.Text = "Number of People Subscribed: " + publications.ElementAt(dataList.SelectedIndex).NumSubs + " ----- Total Amount Owed: "
                  + publications.ElementAt(dataList.SelectedIndex).TotalOwed;
 
             //make panel visible 
@@ -977,7 +978,7 @@ namespace newspaper_delivery_system
         {
             summaryButton.Visible = false;
             panel1.Visible = false;
-            panel1.Location = new Point(435, 718);
+            panel1.Location = new Point(252, 772);
         }
         //All form controls
         private void welcomelabel2_Click(object sender, EventArgs e)

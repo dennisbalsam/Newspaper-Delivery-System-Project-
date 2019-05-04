@@ -168,10 +168,10 @@
             // 
             // messageBox
             // 
-            this.messageBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageBox.Location = new System.Drawing.Point(-1, 13);
+            this.messageBox.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.messageBox.Location = new System.Drawing.Point(-1, 15);
             this.messageBox.Name = "messageBox";
-            this.messageBox.Size = new System.Drawing.Size(575, 23);
+            this.messageBox.Size = new System.Drawing.Size(780, 23);
             this.messageBox.TabIndex = 10;
             this.messageBox.Text = "label1";
             this.messageBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -182,9 +182,9 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.messageBox);
-            this.panel1.Location = new System.Drawing.Point(435, 718);
+            this.panel1.Location = new System.Drawing.Point(252, 772);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(575, 55);
+            this.panel1.Size = new System.Drawing.Size(780, 55);
             this.panel1.TabIndex = 11;
             this.panel1.Visible = false;
             // 
@@ -417,7 +417,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 800);
+            this.ClientSize = new System.Drawing.Size(1284, 865);
             this.Controls.Add(this.summaryButton);
             this.Controls.Add(this.paymentButton);
             this.Controls.Add(this.moneyTextbox);
