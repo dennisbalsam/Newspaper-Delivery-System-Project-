@@ -52,6 +52,11 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.addressLabel = new System.Windows.Forms.Label();
+            this.householdSubOption = new System.Windows.Forms.Button();
+            this.option12 = new System.Windows.Forms.Button();
+            this.option11 = new System.Windows.Forms.Button();
+            this.option10 = new System.Windows.Forms.Button();
+            this.option9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +67,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Publications",
             "Carriers",
-            "HouseHold Info",
+            "Household Info",
             "Billing"});
             this.comboBox1.Location = new System.Drawing.Point(261, 107);
             this.comboBox1.Name = "comboBox1";
@@ -107,9 +112,9 @@
             // 
             this.dataList.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataList.FormattingEnabled = true;
-            this.dataList.Location = new System.Drawing.Point(132, 223);
+            this.dataList.Location = new System.Drawing.Point(46, 223);
             this.dataList.Name = "dataList";
-            this.dataList.Size = new System.Drawing.Size(707, 173);
+            this.dataList.Size = new System.Drawing.Size(793, 173);
             this.dataList.TabIndex = 4;
             this.dataList.Visible = false;
             this.dataList.SelectedIndexChanged += new System.EventHandler(this.dataList_SelectedIndexChanged);
@@ -117,9 +122,9 @@
             // datalist2
             // 
             this.datalist2.FormattingEnabled = true;
-            this.datalist2.Location = new System.Drawing.Point(132, 512);
+            this.datalist2.Location = new System.Drawing.Point(46, 512);
             this.datalist2.Name = "datalist2";
-            this.datalist2.Size = new System.Drawing.Size(707, 173);
+            this.datalist2.Size = new System.Drawing.Size(793, 173);
             this.datalist2.TabIndex = 5;
             this.datalist2.Visible = false;
             this.datalist2.SelectedIndexChanged += new System.EventHandler(this.datalist2_SelectedIndexChanged);
@@ -317,11 +322,65 @@
             this.addressLabel.Visible = false;
             this.addressLabel.Click += new System.EventHandler(this.addressLabel_Click);
             // 
+            // householdSubOption
+            // 
+            this.householdSubOption.Location = new System.Drawing.Point(261, 430);
+            this.householdSubOption.Name = "householdSubOption";
+            this.householdSubOption.Size = new System.Drawing.Size(153, 50);
+            this.householdSubOption.TabIndex = 24;
+            this.householdSubOption.UseVisualStyleBackColor = true;
+            this.householdSubOption.Visible = false;
+            // 
+            // option12
+            // 
+            this.option12.Location = new System.Drawing.Point(1123, 645);
+            this.option12.Name = "option12";
+            this.option12.Size = new System.Drawing.Size(149, 52);
+            this.option12.TabIndex = 25;
+            this.option12.Text = "Suspend/Unsuspend Household";
+            this.option12.UseVisualStyleBackColor = true;
+            this.option12.Visible = false;
+            // 
+            // option11
+            // 
+            this.option11.Location = new System.Drawing.Point(1123, 500);
+            this.option11.Name = "option11";
+            this.option11.Size = new System.Drawing.Size(149, 52);
+            this.option11.TabIndex = 26;
+            this.option11.Text = "Modify Household Info";
+            this.option11.UseVisualStyleBackColor = true;
+            this.option11.Visible = false;
+            // 
+            // option10
+            // 
+            this.option10.Location = new System.Drawing.Point(1123, 355);
+            this.option10.Name = "option10";
+            this.option10.Size = new System.Drawing.Size(149, 52);
+            this.option10.TabIndex = 27;
+            this.option10.Text = "Delete Household";
+            this.option10.UseVisualStyleBackColor = true;
+            this.option10.Visible = false;
+            // 
+            // option9
+            // 
+            this.option9.Location = new System.Drawing.Point(1123, 210);
+            this.option9.Name = "option9";
+            this.option9.Size = new System.Drawing.Size(149, 52);
+            this.option9.TabIndex = 28;
+            this.option9.Text = "Add Household";
+            this.option9.UseVisualStyleBackColor = true;
+            this.option9.Visible = false;
+            // 
             // message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 800);
+            this.Controls.Add(this.option9);
+            this.Controls.Add(this.option10);
+            this.Controls.Add(this.option11);
+            this.Controls.Add(this.option12);
+            this.Controls.Add(this.householdSubOption);
             this.Controls.Add(this.addressLabel);
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.nameLabel);
@@ -380,6 +439,11 @@
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label addressLabel;
+        private System.Windows.Forms.Button householdSubOption;
+        private System.Windows.Forms.Button option12;
+        private System.Windows.Forms.Button option11;
+        private System.Windows.Forms.Button option10;
+        private System.Windows.Forms.Button option9;
     }
 }
 

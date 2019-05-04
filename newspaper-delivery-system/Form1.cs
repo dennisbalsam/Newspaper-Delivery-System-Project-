@@ -21,7 +21,6 @@ namespace newspaper_delivery_system
 
         BindingSource bs = new BindingSource();
         BindingSource carrierlist = new BindingSource();
-        BindingSource publicationlist = new BindingSource();
         BindingSource subs = new BindingSource();
         
         public message()
@@ -50,6 +49,7 @@ namespace newspaper_delivery_system
         {
             PublicationsButtonsVisible();
             CarrierButtonsNotVisible();
+            HouseholdButtonsNotVisible();
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
@@ -68,11 +68,12 @@ namespace newspaper_delivery_system
         //Carrier Info Function
         public void CarrierInfo()
         {
+            PublicationsButtonsNotVisible();
+            HouseholdButtonsNotVisible();
+            CarrierButtonsVisible();
             button1.Text = "Display all Carriers";
             button1.Visible = true;
             button1.Click += new EventHandler(DisplayallCarrierinfo);
-            PublicationsButtonsNotVisible();
-            CarrierButtonsVisible();
             option5.Click += new EventHandler(CarrierRoutesButton);
             option6.Click += new EventHandler(AddCarrierButton);
             option7.Click += new EventHandler(RemoveCarrierButton);
@@ -86,15 +87,20 @@ namespace newspaper_delivery_system
         //Publication Info Function
         public void HouseholdInfo()
         {
-            option1.Click -= new EventHandler(AddNewSubscription);
-            option2.Click -= new EventHandler(DisplaySubs);
-            option3.Click -= new EventHandler(RemoveButton);
+            PublicationsButtonsNotVisible();
+            CarrierButtonsNotVisible();
+            HouseholdButtonsVisible();
+            button1.Text = "Display all HouseHolds";
+            button1.Visible = true;
+            button1.Click += new EventHandler(DisplayallHouseinfo);
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
-            button1.Visible = true;
-            button1.Text = "Display all Publications";
-            button1.Click += new EventHandler(DisplayallPublicationinfo);
+            option9.Click += new EventHandler(AddHouseholdButton);
+            option10.Click += new EventHandler(DeleteHouseholdButton);
+            option11.Click += new EventHandler(ModifyInfoButton);
+            option12.Click += new EventHandler(SuspendHouseholdButton);
+        
         }
         //-----------------------------------------------------------------------PUBLICATIONS SECTION-----------------------------------------------------
         //--------------------------------------REMOVE METHODS GUI--------------------------------------
@@ -205,8 +211,7 @@ namespace newspaper_delivery_system
         //-Carrier Routes Button
         public void CarrierRoutesButton(object sender, EventArgs e)
         {
-            //Make list non visible
-            dataList.Visible = false;
+            
             //Make label not visible
             panel1.Visible = false;
             //make text boxes not visible 
@@ -352,7 +357,7 @@ namespace newspaper_delivery_system
 
 
         }
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------
         //----------------------------------------------------------------Modify carrier button
         public void ModifyCarrierButton(object sender, EventArgs e)
         {
@@ -425,6 +430,248 @@ namespace newspaper_delivery_system
             textBox3.ResetText();
 
         }
+        //-------------------------------------------------------End carrier functions-------------------------------------------------------------
+        //-----------------------------------------------------------Household Functions---------------------------------------------------------------
+        //Function for the button itself to add house
+        public void AddHouseholdButton(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+            //Hide the carrier list
+            button1.Visible = false;
+            dataList.Visible = false;
+            datalist2.Visible = false;
+
+            //make text boxes visible for data entry
+            nameLabel.Visible = true;
+            phoneLabel.Visible = true;
+            addressLabel.Visible = true;
+            textBox1.Visible = true;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+            //add suboption
+            householdSubOption.Location = new Point(435, 430);
+            householdSubOption.Text = "Add House";
+            householdSubOption.Visible = true;
+            householdSubOption.Click -= new EventHandler(AddHousehold);
+            householdSubOption.Click -= new EventHandler(DeleteHousehold);
+            householdSubOption.Click -= new EventHandler(ModifyInfo);
+            householdSubOption.Click -= new EventHandler(SuspendHouse);
+            householdSubOption.Click += new EventHandler(AddHousehold);
+        }
+        //Sub button to add house
+        public void AddHousehold(object sender, EventArgs e)
+        {
+
+            //Local Variables
+            string name, address, phone;
+            //Set variables to textbox data
+            name = textBox1.Text;
+            phone = textBox2.Text;
+            address = textBox3.Text;
+
+
+            //Create a temp household
+           Household newHouse = new Household(name, address, phone);
+
+            //Add the new carrier to the list of households
+            households.Add(newHouse);
+            // Update list of households
+            bs.ResetBindings(false);
+
+            //Display label
+            panel1.Visible = true;
+            messageBox.Text = "Household Added";
+
+            //Display new addition
+            dataList.Visible = true;
+            DisplayallHouseinfo();
+            dataList.SelectedIndex = bs.Count - 1;
+
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+
+        }
+
+        //Function for the delete household button
+        public void DeleteHouseholdButton(object sender, EventArgs e)
+        {
+            //make messgae not visible
+            panel1.Visible = false;
+            //change location of button
+            householdSubOption.Location = new Point(435, 430);
+            //make button visible
+            button1.Visible = true;
+            //make text boxes not visible 
+            nameLabel.Visible = false;
+            phoneLabel.Visible = false;
+            addressLabel.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+
+
+
+            //Remove old event handling, and add new one
+            householdSubOption.Visible = true;
+            householdSubOption.Text = "Remove Household";
+            householdSubOption.Click -= new EventHandler(AddHousehold);
+            householdSubOption.Click -= new EventHandler(DeleteHousehold);
+            householdSubOption.Click -= new EventHandler(ModifyInfo);
+            householdSubOption.Click -= new EventHandler(SuspendHouse);
+            householdSubOption.Click += new EventHandler(DeleteHousehold);
+        }
+        //Sub button to delete house
+        public void DeleteHousehold(object sender, EventArgs e)
+        {
+            //get selected index and delete it from list
+            bs.RemoveAt(dataList.SelectedIndex);
+            //reset the carrier list
+            bs.ResetBindings(false);
+            DisplayallHouseinfo();
+            //indicate it has been removed
+            messageBox.Text = "Household has been removed, # of households = " + (bs.Count - 1);
+            panel1.Visible = true;
+        }
+
+        //Function to modify household Info
+        public void ModifyInfoButton(object sender, EventArgs e)
+        {
+            householdSubOption.Location = new Point(435, 430);
+            panel1.Visible = false;
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+
+            //make text boxes visible for data entry
+            nameLabel.Visible = true;
+            phoneLabel.Visible = true;
+            addressLabel.Visible = true;
+            textBox1.Visible = true;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+
+            //Remove old event handling, and add new one
+            householdSubOption.Text = "Modify Household";
+            householdSubOption.Visible = true;
+            householdSubOption.Click -= new EventHandler(AddHousehold);
+            householdSubOption.Click -= new EventHandler(DeleteHousehold);
+            householdSubOption.Click -= new EventHandler(SuspendHouse);
+            householdSubOption.Click -= new EventHandler(ModifyInfo);
+            householdSubOption.Click += new EventHandler(ModifyInfo);
+        }
+        //Sub button to modify info
+        public void ModifyInfo(object sender, EventArgs e)
+        {
+            //Local Variables
+            string name, address, phone;
+            //Set variables to textbox data
+            if (String.IsNullOrEmpty(textBox1.Text) == false)
+            {
+                name = textBox1.Text;
+                households.ElementAt(dataList.SelectedIndex).Name = name;
+            }
+            if (String.IsNullOrEmpty(textBox2.Text) == false)
+            {
+                phone = textBox2.Text;
+                households.ElementAt(dataList.SelectedIndex).Phone = phone;
+            }
+            if (String.IsNullOrEmpty(textBox3.Text) == false)
+            {
+                address = textBox3.Text;
+                households.ElementAt(dataList.SelectedIndex).Address = address;
+            }
+
+
+
+
+            // Update list of carriers
+            bs.ResetBindings(false);
+
+            //Display label
+            panel1.Visible = true;
+            messageBox.Text = "Household Info Modified";
+
+            //Display new addition
+            DisplayallHouseinfo();
+
+
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+        }
+
+        //Function for suspend household button
+        public void SuspendHouseholdButton(object sender, EventArgs e)
+        {
+            //make messgae not visible
+            panel1.Visible = false;
+            //change location of button
+            householdSubOption.Location = new Point(435, 430);
+            //make button visible
+            button1.Visible = true;
+            //make text boxes not visible 
+            nameLabel.Visible = false;
+            phoneLabel.Visible = false;
+            addressLabel.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+
+
+
+            //Remove old event handling, and add new one
+            householdSubOption.Visible = true;
+
+            //get selected index and delete it from list
+     
+            householdSubOption.Text = "Suspend/Unsuspend House Delivery";
+            householdSubOption.Click -= new EventHandler(AddHousehold);
+            householdSubOption.Click -= new EventHandler(DeleteHousehold);
+            householdSubOption.Click -= new EventHandler(ModifyInfo);
+            householdSubOption.Click -= new EventHandler(SuspendHouse);
+            householdSubOption.Click += new EventHandler(SuspendHouse);
+
+          
+      
+        }
+        //Sub button to suspend household
+        public void SuspendHouse(object sender, EventArgs e)
+        {
+            //get selected index and delete it from list
+            if (households.ElementAt(dataList.SelectedIndex).Suspended == true)
+            {
+                households.ElementAt(dataList.SelectedIndex).Suspended = false;
+                messageBox.Text = "Household Delivery has been unsuspended ";
+            }
+            else
+            {
+                households.ElementAt(dataList.SelectedIndex).Suspended = true;
+                messageBox.Text = "Household Delivery has been suspended ";
+            }
+            //reset the carrier list
+            bs.ResetBindings(false);
+            DisplayallHouseinfo();
+            //indicate it has been suspended / unsuspended
+            
+            panel1.Visible = true;
+        }
+
+
+
+
+
+
+
+        //-------------------------------------------------------------End household functions------------------------------------------------------
+    
         // -------------------------------DISPLAY LIST FUNCTIONS---------------------------------------------
         //Display current houses subscription LIST  
         public void DisplaySubs(object sender, EventArgs e)
@@ -446,8 +693,17 @@ namespace newspaper_delivery_system
 
         }
 
-            //Display all households
+            //Display all households BUTTON
         public void DisplayallHouseinfo(object sender, EventArgs e)
+        {
+
+            bs.DataSource = households;
+            dataList.DataSource = bs;
+            dataList.Visible = true;
+
+        }
+        //Display all households
+        public void DisplayallHouseinfo()
         {
 
             bs.DataSource = households;
@@ -503,7 +759,20 @@ namespace newspaper_delivery_system
             option7.Location = new Point(1040, 500);
             option8.Location = new Point(1040, 645);
         }
-
+        //Household buttons
+        public void HouseholdButtonsVisible()
+        {
+            //Make the buttons visible
+            option9.Visible = true;
+            option10.Visible = true;
+            option11.Visible = true;
+            option12.Visible = true;
+            //Change location
+            option9.Location = new Point(1040, 210);
+            option10.Location = new Point(1040, 355);
+            option11.Location = new Point(1040, 500);
+            option12.Location = new Point(1040, 645);
+        }
 
 
 
@@ -539,7 +808,20 @@ namespace newspaper_delivery_system
             textBox3.Visible = false;
             panel1.Visible = false;
         }
-
+        //Household buttons
+        public void HouseholdButtonsNotVisible()
+        {
+            //Make the buttons not visible
+            option9.Visible = false;
+            option10.Visible = false;
+            option11.Visible = false;
+            option12.Visible = false;
+            subOption.Visible = false;
+            householdSubOption.Visible = false;
+            //Make sure data lists also arent visible
+            dataList.Visible = false;
+            datalist2.Visible = false;
+        }
 
 
         //All form controls

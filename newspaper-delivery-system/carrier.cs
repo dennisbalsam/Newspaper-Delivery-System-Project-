@@ -73,9 +73,13 @@ namespace newspaper_delivery_system
             //Lopp a few times 
             for (int x = 0; x < 3; x++)
             {
-
-                int rInt = r.Next(0, allHouses.Count); //get a random number
-                HouseholdsRoute.Add(allHouses.ElementAt(rInt));
+                int rInt = 0;
+                do
+                {
+                   rInt = r.Next(0, allHouses.Count); //get a random number
+                } while (allHouses.ElementAt(rInt).Suspended == true); //make sure the household isn't suspended
+                //Add the households to the route
+                 HouseholdsRoute.Add(allHouses.ElementAt(rInt));
             }
 
         }
