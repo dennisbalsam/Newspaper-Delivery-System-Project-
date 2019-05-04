@@ -55,7 +55,7 @@ namespace newspaper_delivery_system
             PublicationsButtonsNotVisible();
             CarrierButtonsNotVisible();
             HouseholdButtonsNotVisible();
-            
+            BillingButtonsVisible();
             DisplayallHouseinfo();
             dataList.Visible = true;
             welcomelabel2.Visible = false;
@@ -63,7 +63,7 @@ namespace newspaper_delivery_system
            
             option2.Location = new Point(435, 430);
             option2.Click += new EventHandler(DisplaySubs);
-            button1.Visible = false;
+           
             billingButton.Location = new Point(261, 430);
             billingButton.Text = "View Total Owed";
             billingButton.Click += new EventHandler(viewBill);
@@ -146,7 +146,10 @@ namespace newspaper_delivery_system
         public void RemoveSubscirption(object sender, EventArgs e)
         {
             //call method to remove subscription
-            households.ElementAt(dataList.SelectedIndex).removeSubscription(datalist2.SelectedIndex);
+            if (households.ElementAt(dataList.SelectedIndex).getAllSubscriptions() != null)
+                households.ElementAt(dataList.SelectedIndex).removeSubscription(datalist2.SelectedIndex);
+            else
+                return;
             //Reset the list of house's subscriptions
             subs.ResetBindings(false);
             //Call the display subscriptions method
@@ -275,8 +278,7 @@ namespace newspaper_delivery_system
             textBox1.ResetText();
             textBox2.ResetText();
             textBox3.ResetText();
-            //Hide the carrier list
-            button1.Visible = false;
+            
             
             datalist2.Visible = false;
 
@@ -691,10 +693,63 @@ namespace newspaper_delivery_system
         //-------------------------------------------------------------Billing section----------------------------------------------------------
         public void viewBill(object sender, EventArgs e)
         {
-            messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: " + households.ElementAt(dataList.SelectedIndex).TotalOwed;
+            //Output amount of subs, and money owed for selected house
+            messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: " 
+                    + households.ElementAt(dataList.SelectedIndex).TotalOwed;
+            // Make buttons visible
             panel1.Visible = true;
+            moneyLabel.Visible = true;
+            moneyTextbox.Visible = true;
+            paymentButton.Visible = true;
+            paymentButton.Click += new EventHandler(MakePayment);
         }
+        public void MakePayment(object sender, EventArgs e)
+        {
+            //Local Variable
+            double amount, change = 0;
+            if (String.IsNullOrEmpty(moneyTextbox.Text) == false)
+            {
 
+                amount = double.Parse(moneyTextbox.Text);
+                //Check to make sure value isn't negative
+
+                if (amount > 0)
+                {
+                    moneyLabel.Text = "Input Amount Paid: ";
+                    moneyTextbox.ResetText();
+                    //Make calculation
+                    if (amount > households.ElementAt(dataList.SelectedIndex).TotalOwed)
+                    {
+                        change = amount - households.ElementAt(dataList.SelectedIndex).TotalOwed;
+                    }
+                    households.ElementAt(dataList.SelectedIndex).TotalOwed -= amount;
+                    //Update Info
+                    messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: "
+                     + households.ElementAt(dataList.SelectedIndex).TotalOwed;
+                    //Get amount
+                    moneyTextbox.ResetText();
+                }
+                else
+                {
+                    moneyTextbox.ResetText();
+                    moneyLabel.Text = "Input Positive Amount: ";
+                }
+
+                if (households.ElementAt(dataList.SelectedIndex).TotalOwed < 0)
+                {
+                    households.ElementAt(dataList.SelectedIndex).TotalOwed = 0.00;
+                    messageBox.Text = "Number of Subscirptions: " + households.ElementAt(dataList.SelectedIndex).NumSubs.ToString() + " ---- Total Owed: "
+                    + households.ElementAt(dataList.SelectedIndex).TotalOwed + " ---- Change due to House: " + change;
+                }
+            }
+        }
+        //Function to insure number is positive
+        public void CheckPositive()
+        {
+    
+        }
+    
+  
 
 
         //---------------------------------------------------------------------------------------------------------------------------------------
@@ -798,7 +853,13 @@ namespace newspaper_delivery_system
             option11.Location = new Point(1040, 500);
             option12.Location = new Point(1040, 645);
         }
-        
+        //Billing Buttons
+        public void BillingButtonsVisible()
+        {
+            option2.Visible = true;
+            billingButton.Visible = true;
+
+        }
         
 
 
@@ -853,6 +914,10 @@ namespace newspaper_delivery_system
         {
             billingButton.Visible = false;
             option2.Visible = false;
+            moneyLabel.Visible = false;
+            moneyTextbox.Visible = false;
+            paymentButton.Visible = false;
+            panel1.Visible = false;
         }
 
         //All form controls
@@ -871,10 +936,6 @@ namespace newspaper_delivery_system
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataList_SelectedIndexChanged(object sender, EventArgs e)
         {

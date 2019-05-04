@@ -59,7 +59,7 @@
             this.billingButton = new System.Windows.Forms.Button();
             this.moneyLabel = new System.Windows.Forms.Label();
             this.moneyTextbox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.paymentButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,9 +167,9 @@
             // messageBox
             // 
             this.messageBox.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.messageBox.Location = new System.Drawing.Point(-1, 14);
+            this.messageBox.Location = new System.Drawing.Point(-1, 13);
             this.messageBox.Name = "messageBox";
-            this.messageBox.Size = new System.Drawing.Size(321, 23);
+            this.messageBox.Size = new System.Drawing.Size(575, 23);
             this.messageBox.TabIndex = 10;
             this.messageBox.Text = "label1";
             this.messageBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,9 +180,9 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.messageBox);
-            this.panel1.Location = new System.Drawing.Point(563, 718);
+            this.panel1.Location = new System.Drawing.Point(435, 718);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(321, 55);
+            this.panel1.Size = new System.Drawing.Size(575, 55);
             this.panel1.TabIndex = 11;
             this.panel1.Visible = false;
             // 
@@ -390,22 +390,23 @@
             this.moneyTextbox.TabIndex = 31;
             this.moneyTextbox.Visible = false;
             // 
-            // button1
+            // paymentButton
             // 
-            this.button1.Location = new System.Drawing.Point(559, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 42);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.paymentButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.paymentButton.Location = new System.Drawing.Point(1000, 483);
+            this.paymentButton.Name = "paymentButton";
+            this.paymentButton.Size = new System.Drawing.Size(125, 35);
+            this.paymentButton.TabIndex = 32;
+            this.paymentButton.Text = "Update Bill";
+            this.paymentButton.UseVisualStyleBackColor = true;
+            this.paymentButton.Visible = false;
             // 
             // message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 800);
+            this.Controls.Add(this.paymentButton);
             this.Controls.Add(this.moneyTextbox);
             this.Controls.Add(this.moneyLabel);
             this.Controls.Add(this.billingButton);
@@ -433,7 +434,6 @@
             this.Controls.Add(this.option1);
             this.Controls.Add(this.datalist2);
             this.Controls.Add(this.dataList);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.welcomelabel2);
             this.Controls.Add(this.Welcomelabel);
             this.Controls.Add(this.comboBox1);
@@ -479,7 +479,7 @@
         private System.Windows.Forms.Button billingButton;
         private System.Windows.Forms.Label moneyLabel;
         private System.Windows.Forms.TextBox moneyTextbox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button paymentButton;
     }
 }
 
