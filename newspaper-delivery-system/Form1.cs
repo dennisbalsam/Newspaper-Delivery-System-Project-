@@ -63,6 +63,7 @@ namespace newspaper_delivery_system
             SummaryButtonsVisible();
             dataList.DataSource = publications;
             dataList.Visible = true;
+            summaryButton.Location = new Point(435, 430);
             summaryButton.Click += new EventHandler(DisplaySummary);
 
         }
@@ -792,9 +793,9 @@ namespace newspaper_delivery_system
         public void DisplaySummary(object sender, EventArgs e)
         {
             //output summary message
-            messageBox.Text = "Number of People Subscribed: " + publications.ElementAt(dataList.SelectedIndex).NumSubs + " ----- Total Amount Owed: "
-                 + publications.ElementAt(dataList.SelectedIndex).TotalOwed;
-
+            messageBox.Text = "Number of People Subscribed: " + publications.ElementAt(dataList.SelectedIndex).NumSubs
+                + String.Format(" ---- Total Owed:  {0:C}", publications.ElementAt(dataList.SelectedIndex).TotalOwed); 
+             
             //make panel visible 
             panel1.Visible = true;
         }
@@ -913,7 +914,7 @@ namespace newspaper_delivery_system
         public void SummaryButtonsVisible()
         {
             summaryButton.Visible =  true;
-            panel1.Location = new Point(405, 558);
+            panel1.Location = new Point(252, 558);
         }
 
 
