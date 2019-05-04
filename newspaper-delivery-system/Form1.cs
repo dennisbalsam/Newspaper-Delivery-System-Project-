@@ -20,6 +20,8 @@ namespace newspaper_delivery_system
         List<Publication> publications = DataHandler.getPublicationData(path + "publications.csv");
 
         BindingSource bs = new BindingSource();
+        BindingSource carrierlist = new BindingSource();
+        BindingSource publicationlist = new BindingSource();
         BindingSource subs = new BindingSource();
         
         public message()
@@ -46,16 +48,15 @@ namespace newspaper_delivery_system
         // Household info function
         public void PublicationInfo()
         {
+            PublicationsButtonsVisible();
+            CarrierButtonsNotVisible();
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
             button1.Visible = true;
             button1.Text = "Display all Households";
             button1.Click += new EventHandler(DisplayallHouseinfo);
-            option1.Visible = true;
-            option2.Visible = true;
-            option3.Visible = true;
-            option4.Visible = true;
+            PublicationsButtonsVisible();
             option1.Click += new EventHandler(AddNewSubscription);
             option2.Click += new EventHandler(DisplaySubs);
             option3.Click += new EventHandler(RemoveButton);
@@ -67,15 +68,20 @@ namespace newspaper_delivery_system
         //Carrier Info Function
         public void CarrierInfo()
         {
-            option1.Click -= new EventHandler(AddNewSubscription);
-            option2.Click -= new EventHandler(DisplaySubs);
-            option3.Click -= new EventHandler(RemoveButton);
+            button1.Text = "Display all Carriers";
+            button1.Visible = true;
+            button1.Click += new EventHandler(DisplayallCarrierinfo);
+            PublicationsButtonsNotVisible();
+            CarrierButtonsVisible();
+            option5.Click += new EventHandler(CarrierRoutesButton);
+            option6.Click += new EventHandler(AddCarrierButton);
+            option7.Click += new EventHandler(RemoveCarrierButton);
+            option8.Click += new EventHandler(ModifyCarrierButton);
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
-            button1.Visible = true;
-            button1.Text = "Display all Carriers";
-            button1.Click += new EventHandler(DisplayallCarrierinfo);
+
+            
         }
         //Publication Info Function
         public void HouseholdInfo()
@@ -90,6 +96,7 @@ namespace newspaper_delivery_system
             button1.Text = "Display all Publications";
             button1.Click += new EventHandler(DisplayallPublicationinfo);
         }
+        //-----------------------------------------------------------------------PUBLICATIONS SECTION-----------------------------------------------------
         //--------------------------------------REMOVE METHODS GUI--------------------------------------
         //function called when remove sub button is clicked
         public void RemoveButton(object sender, EventArgs e)
@@ -123,6 +130,7 @@ namespace newspaper_delivery_system
         //-----------------------------------------Has subscription method GUI----------------------------------
         public void HasSubscriptionButton(object sender, EventArgs e)
         {
+     
             //Make message not visible and change text
             panel1.Visible = false;
             subOption.Text = "Check for Subscription";
@@ -191,6 +199,232 @@ namespace newspaper_delivery_system
         }
         // -----------------------------------------------------------------------------------------------
 
+        //--------------------------------------------------------------------------------END PUBLICATIONS -------------------------------------------------------
+
+        //-----------------------------------------------------------------------------Carrier Functions Section-----------------------------------------------------
+        //-Carrier Routes Button
+        public void CarrierRoutesButton(object sender, EventArgs e)
+        {
+            //Make list non visible
+            dataList.Visible = false;
+            //Make label not visible
+            panel1.Visible = false;
+            //make text boxes not visible 
+            nameLabel.Visible = false;
+            phoneLabel.Visible = false;
+            addressLabel.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+            //Make display carriers visible
+            button1.Click += new EventHandler(DisplayallCarrierinfo);
+            button1.Visible = true;
+            button1.Text = "Display all Carriers";
+            // add event handler 
+            carrierSubOption.Click -= new EventHandler(AddCarrier);
+            carrierSubOption.Click -= new EventHandler(RemoveCarrier);
+            carrierSubOption.Click -= new EventHandler(ModifyCarrier);
+            carrierSubOption.Click += new EventHandler(ViewCarrierRoutes);
+            
+            //Change text and location
+            carrierSubOption.Text = "Check Routes";
+            carrierSubOption.Visible = true;
+            carrierSubOption.Location = new Point(435, 430);
+        
+        }
+        //Actually adding a route button
+        public void ViewCarrierRoutes(object sender, EventArgs e)
+        {
+            //Assign the carrier routes
+            carriers.ElementAt(dataList.SelectedIndex).assignHouses(households);
+            // Output it in the second datalist
+            datalist2.DataSource = carriers.ElementAt(dataList.SelectedIndex).getAllHouseholds();
+            datalist2.Visible = true;
+        }
+        //-----------------------------------------------------------------Add carrier button
+        public void AddCarrierButton(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+            //Hide the carrier list
+            button1.Visible = false;
+            dataList.Visible = false;
+            datalist2.Visible = false;
+
+            //make text boxes visible for data entry
+            nameLabel.Visible = true;
+            phoneLabel.Visible = true;
+            addressLabel.Visible = true;
+            textBox1.Visible = true;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+
+            //Remove old event handling, and add new one
+            carrierSubOption.Text = "Add Carrier";
+            carrierSubOption.Visible = true;
+            carrierSubOption.Click -= new EventHandler(ViewCarrierRoutes);
+            carrierSubOption.Click -= new EventHandler(AddCarrier);
+            carrierSubOption.Click -= new EventHandler(ModifyCarrier);
+            carrierSubOption.Click -= new EventHandler(RemoveCarrier);
+            carrierSubOption.Click += new EventHandler(AddCarrier);
+
+
+        }
+        //Actually adding a carrier
+        public void AddCarrier(object sender, EventArgs e)
+        {
+  
+            //Local Variables
+            string name, address, phone;
+            //Set variables to textbox data
+            name = textBox1.Text;
+            phone = textBox2.Text;
+            address = textBox3.Text;
+
+       
+            //Create a temp carrier
+            Carrier newCarrier = new Carrier(name, address, phone);
+
+            //Add the new carrier to the list of carriers
+            carriers.Add(newCarrier);
+            // Update list of carriers
+            carrierlist.ResetBindings(false);
+
+            //Display label
+            panel1.Visible = true;
+            messageBox.Text = "Carrier Added";
+
+            //Display new addition
+            dataList.Visible = true;
+            DisplayallCarrierinfo();
+            dataList.SelectedIndex= carrierlist.Count - 1;
+
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+
+        }
+        //--------------------------------Remove carrier button---------------------------------
+        public void RemoveCarrierButton(object sender, EventArgs e)
+        {
+            //make messgae not visible
+            panel1.Visible = false;
+            //change location of button
+            carrierSubOption.Location = new Point(435, 430);
+            //make button visible
+            button1.Visible = true;
+            //make text boxes not visible 
+            nameLabel.Visible = false;
+            phoneLabel.Visible = false;
+            addressLabel.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+
+           
+
+            //Remove old event handling, and add new one
+            carrierSubOption.Text = "Remove Carrier";
+            carrierSubOption.Visible = true;
+            carrierSubOption.Click -= new EventHandler(ViewCarrierRoutes);
+            carrierSubOption.Click -= new EventHandler(AddCarrier);
+            carrierSubOption.Click -= new EventHandler(ModifyCarrier);
+            carrierSubOption.Click -= new EventHandler(RemoveCarrier);
+            carrierSubOption.Click += new EventHandler(RemoveCarrier);
+
+
+        }
+        //Actually adding a carrier
+        public void RemoveCarrier(object sender, EventArgs e)
+        {
+            //get selected index and delete it from list
+            carrierlist.RemoveAt(dataList.SelectedIndex);
+            //reset the carrier list
+            carrierlist.ResetBindings(false);
+            DisplayallCarrierinfo();
+            //indicate it has been removed
+            messageBox.Text = "Carrier has been removed, # of carriers = " + (carrierlist.Count - 1);
+            panel1.Visible = true;
+
+
+        }
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------Modify carrier button
+        public void ModifyCarrierButton(object sender, EventArgs e)
+        {
+            carrierSubOption.Location = new Point(435, 430);
+            panel1.Visible = false;
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+
+            //make text boxes visible for data entry
+            nameLabel.Visible = true;
+            phoneLabel.Visible = true;
+            addressLabel.Visible = true;
+            textBox1.Visible = true;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+
+            //Remove old event handling, and add new one
+            carrierSubOption.Text = "Modify Carrier";
+            carrierSubOption.Visible = true;
+            carrierSubOption.Click -= new EventHandler(ViewCarrierRoutes);
+            carrierSubOption.Click -= new EventHandler(AddCarrier);
+            carrierSubOption.Click -= new EventHandler(RemoveCarrier);
+            carrierSubOption.Click -= new EventHandler(ModifyCarrier);
+            carrierSubOption.Click += new EventHandler(ModifyCarrier);
+
+
+        }
+        //Actually adding a carrier
+        public void ModifyCarrier(object sender, EventArgs e)
+        {
+            
+            //Local Variables
+            string name, address, phone;
+            //Set variables to textbox data
+            if (String.IsNullOrEmpty(textBox1.Text) == false)
+            {
+                name = textBox1.Text;
+                carriers.ElementAt(dataList.SelectedIndex).Name = name;
+            }
+            if (String.IsNullOrEmpty(textBox2.Text) == false)
+            {
+                phone = textBox2.Text;
+                carriers.ElementAt(dataList.SelectedIndex).Phone = phone;
+            }
+            if (String.IsNullOrEmpty(textBox3.Text) == false)
+            {
+                address = textBox3.Text;
+                carriers.ElementAt(dataList.SelectedIndex).Address = address;
+            }
+
+            
+
+           
+            // Update list of carriers
+            carrierlist.ResetBindings(false);
+
+            //Display label
+            panel1.Visible = true;
+            messageBox.Text = "Carrier Info Modified";
+
+            //Display new addition
+            DisplayallCarrierinfo();
+           
+
+            //Make sure textboxes are empty
+            textBox1.ResetText();
+            textBox2.ResetText();
+            textBox3.ResetText();
+
+        }
         // -------------------------------DISPLAY LIST FUNCTIONS---------------------------------------------
         //Display current houses subscription LIST  
         public void DisplaySubs(object sender, EventArgs e)
@@ -213,7 +447,7 @@ namespace newspaper_delivery_system
         }
 
             //Display all households
-            public void DisplayallHouseinfo(object sender, EventArgs e)
+        public void DisplayallHouseinfo(object sender, EventArgs e)
         {
 
             bs.DataSource = households;
@@ -221,10 +455,18 @@ namespace newspaper_delivery_system
             dataList.Visible = true;
 
         }
-        //Display all carriers
+        //Display all carriers button
         public void DisplayallCarrierinfo(object sender, EventArgs e)
         {
-            dataList.DataSource = carriers;
+            carrierlist.DataSource = carriers;
+            dataList.DataSource = carrierlist;
+            dataList.Visible = true;
+        }
+        //Display all carriers just function
+        public void DisplayallCarrierinfo()
+        {
+            carrierlist.DataSource = carriers;
+            dataList.DataSource = carrierlist;
             dataList.Visible = true;
         }
 
@@ -236,6 +478,68 @@ namespace newspaper_delivery_system
             dataList.Visible = true;
         }
         //------------------------------------------------------------------------------------------------
+
+        //Functions to make each Sections buttons visible
+        //Publications buttons
+        public void PublicationsButtonsVisible()
+        {
+            //Make the buttons visible
+            option1.Visible = true;
+            option2.Visible = true;
+            option3.Visible = true;
+            option4.Visible = true;
+        }
+        //Carrier buttons
+        public void CarrierButtonsVisible()
+        {
+            //Make the buttons visible
+            option5.Visible = true;
+            option6.Visible = true;
+            option7.Visible = true;
+            option8.Visible = true;
+            //Change location
+            option5.Location = new Point(1040, 210);
+            option6.Location = new Point(1040, 355);
+            option7.Location = new Point(1040, 500);
+            option8.Location = new Point(1040, 645);
+        }
+
+
+
+
+        //Functions to make each Sections buttons not visible
+        //Publications buttons
+        public void PublicationsButtonsNotVisible()
+        {
+            //Make the buttons not visible
+            option1.Visible = false;
+            option2.Visible = false;
+            option3.Visible = false;
+            option4.Visible = false;
+            subOption.Visible = false;
+            //Make sure data lists also arent visible
+            dataList.Visible = false;
+            datalist2.Visible = false;
+        }
+
+        //Carriers buttons
+        public void CarrierButtonsNotVisible()
+        {
+            option5.Visible = false;
+            option6.Visible = false;
+            option7.Visible = false;
+            option8.Visible = false;
+            carrierSubOption.Visible = false;
+            //make text boxes not visible 
+            nameLabel.Visible = false;
+            phoneLabel.Visible = false;
+            addressLabel.Visible = false;
+            textBox1.Visible = false;
+            textBox2.Visible = false;
+            textBox3.Visible = false;
+            panel1.Visible = false;
+        }
+
 
 
         //All form controls
@@ -269,12 +573,21 @@ namespace newspaper_delivery_system
 
         }
 
-        private void option1_Click(object sender, EventArgs e)
+
+        private void addSub_Click(object sender, EventArgs e)
         {
 
         }
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+        }
 
-        private void addSub_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        //Publication tab buttons --------------------------------------------------------------------------
+        private void option1_Click(object sender, EventArgs e)
         {
 
         }
@@ -289,13 +602,69 @@ namespace newspaper_delivery_system
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-                    }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void option4_Click(object sender, EventArgs e)
         {
 
         }
+
+        //--------------------------------------------------------------------------------------------------
+
+        //Carrier tab buttons---------------------------------------------------------
+        private void option8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void option6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void option5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void option7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void carrierSubOption_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void phoneLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addressLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //----------------------------------------------------------------------------------------
     }
 }

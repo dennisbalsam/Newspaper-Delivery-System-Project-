@@ -41,6 +41,17 @@
             this.messageBox = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.option4 = new System.Windows.Forms.Button();
+            this.option5 = new System.Windows.Forms.Button();
+            this.option6 = new System.Windows.Forms.Button();
+            this.option7 = new System.Windows.Forms.Button();
+            this.option8 = new System.Windows.Forms.Button();
+            this.carrierSubOption = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.phoneLabel = new System.Windows.Forms.Label();
+            this.addressLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,11 +137,10 @@
             // 
             // subOption
             // 
-            this.subOption.Location = new System.Drawing.Point(405, 434);
+            this.subOption.Location = new System.Drawing.Point(435, 430);
             this.subOption.Name = "subOption";
             this.subOption.Size = new System.Drawing.Size(153, 50);
             this.subOption.TabIndex = 7;
-            this.subOption.Text = "Add Subscirption";
             this.subOption.UseVisualStyleBackColor = true;
             this.subOption.Visible = false;
             this.subOption.Click += new System.EventHandler(this.addSub_Click);
@@ -188,12 +198,141 @@
             this.option4.Text = "Has Subscription";
             this.option4.UseVisualStyleBackColor = true;
             this.option4.Visible = false;
+            this.option4.Click += new System.EventHandler(this.option4_Click);
+            // 
+            // option5
+            // 
+            this.option5.Location = new System.Drawing.Point(874, 210);
+            this.option5.Name = "option5";
+            this.option5.Size = new System.Drawing.Size(149, 52);
+            this.option5.TabIndex = 13;
+            this.option5.Text = "Carrier Routes";
+            this.option5.UseVisualStyleBackColor = true;
+            this.option5.Visible = false;
+            this.option5.Click += new System.EventHandler(this.option5_Click);
+            // 
+            // option6
+            // 
+            this.option6.Location = new System.Drawing.Point(874, 355);
+            this.option6.Name = "option6";
+            this.option6.Size = new System.Drawing.Size(149, 52);
+            this.option6.TabIndex = 14;
+            this.option6.Text = "Add Carrier";
+            this.option6.UseVisualStyleBackColor = true;
+            this.option6.Visible = false;
+            this.option6.Click += new System.EventHandler(this.option6_Click);
+            // 
+            // option7
+            // 
+            this.option7.Location = new System.Drawing.Point(874, 500);
+            this.option7.Name = "option7";
+            this.option7.Size = new System.Drawing.Size(149, 52);
+            this.option7.TabIndex = 15;
+            this.option7.Text = "Remove Carrier";
+            this.option7.UseVisualStyleBackColor = true;
+            this.option7.Visible = false;
+            this.option7.Click += new System.EventHandler(this.option7_Click);
+            // 
+            // option8
+            // 
+            this.option8.Location = new System.Drawing.Point(874, 645);
+            this.option8.Name = "option8";
+            this.option8.Size = new System.Drawing.Size(149, 52);
+            this.option8.TabIndex = 16;
+            this.option8.Text = "Modify Existing Info";
+            this.option8.UseVisualStyleBackColor = true;
+            this.option8.Visible = false;
+            this.option8.Click += new System.EventHandler(this.option8_Click);
+            // 
+            // carrierSubOption
+            // 
+            this.carrierSubOption.Location = new System.Drawing.Point(613, 430);
+            this.carrierSubOption.Name = "carrierSubOption";
+            this.carrierSubOption.Size = new System.Drawing.Size(153, 50);
+            this.carrierSubOption.TabIndex = 17;
+            this.carrierSubOption.UseVisualStyleBackColor = true;
+            this.carrierSubOption.Visible = false;
+            this.carrierSubOption.Click += new System.EventHandler(this.carrierSubOption_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(315, 573);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(273, 20);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.Visible = false;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(315, 599);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(273, 20);
+            this.textBox2.TabIndex = 19;
+            this.textBox2.Visible = false;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(315, 625);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(273, 20);
+            this.textBox3.TabIndex = 20;
+            this.textBox3.Visible = false;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(148, 573);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(140, 23);
+            this.nameLabel.TabIndex = 21;
+            this.nameLabel.Text = "Name:";
+            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nameLabel.Visible = false;
+            this.nameLabel.Click += new System.EventHandler(this.nameLabel_Click);
+            // 
+            // phoneLabel
+            // 
+            this.phoneLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phoneLabel.Location = new System.Drawing.Point(148, 599);
+            this.phoneLabel.Name = "phoneLabel";
+            this.phoneLabel.Size = new System.Drawing.Size(140, 23);
+            this.phoneLabel.TabIndex = 22;
+            this.phoneLabel.Text = "Phone Number:";
+            this.phoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.phoneLabel.Visible = false;
+            this.phoneLabel.Click += new System.EventHandler(this.phoneLabel_Click);
+            // 
+            // addressLabel
+            // 
+            this.addressLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressLabel.Location = new System.Drawing.Point(148, 625);
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Size = new System.Drawing.Size(140, 23);
+            this.addressLabel.TabIndex = 23;
+            this.addressLabel.Text = "Address:";
+            this.addressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addressLabel.Visible = false;
+            this.addressLabel.Click += new System.EventHandler(this.addressLabel_Click);
             // 
             // message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 800);
+            this.Controls.Add(this.addressLabel);
+            this.Controls.Add(this.phoneLabel);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.carrierSubOption);
+            this.Controls.Add(this.option8);
+            this.Controls.Add(this.option7);
+            this.Controls.Add(this.option6);
+            this.Controls.Add(this.option5);
             this.Controls.Add(this.option4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.option3);
@@ -207,7 +346,7 @@
             this.Controls.Add(this.Welcomelabel);
             this.Controls.Add(this.comboBox1);
             this.Name = "message";
-            this.Text = "Form1";
+            this.Text = "Name:";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -230,6 +369,17 @@
         private System.Windows.Forms.Label messageBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button option4;
+        private System.Windows.Forms.Button option5;
+        private System.Windows.Forms.Button option6;
+        private System.Windows.Forms.Button option7;
+        private System.Windows.Forms.Button option8;
+        private System.Windows.Forms.Button carrierSubOption;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label phoneLabel;
+        private System.Windows.Forms.Label addressLabel;
     }
 }
 
