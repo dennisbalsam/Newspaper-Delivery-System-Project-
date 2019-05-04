@@ -28,6 +28,13 @@ namespace newspaper_delivery_system
 
         }
 
+        // handle exceptions for listbox interaction
+        public bool HandleListboxException(ListBox lb)
+        {
+            if (!lb.Visible) return false;
+            return true;
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem.ToString() == "Household Info")
@@ -140,7 +147,9 @@ namespace newspaper_delivery_system
         //Button that actually checks if the house the selected subscription
         public void CheckforSubscription(object sender, EventArgs e)
         {
-            
+            // break out of function if dataList.SelectedIndex cannot be obtained
+            HandleListboxException(dataList);
+
             if (households.ElementAt(dataList.SelectedIndex).hasSubscription(publications.ElementAt(datalist2.SelectedIndex)))
                 messageBox.Text = "This house has the subscription: " + publications.ElementAt(datalist2.SelectedIndex).Name;
             else
