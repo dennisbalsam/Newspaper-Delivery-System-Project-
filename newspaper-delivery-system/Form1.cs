@@ -158,15 +158,19 @@ namespace newspaper_delivery_system
             datalist2.Visible = true;
             datalist2.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
             subOption.Text = "Remove Subscription";
-            subOption.Visible = true;
+            
             //Reset button event handling
             subOption.Click -= new EventHandler(addSubscription);
-            subOption.Click -= new EventHandler(RemoveSubscirption);
-            subOption.Click += new EventHandler(RemoveSubscirption);
+            subOption.Click -= new EventHandler(RemoveSubscription);
+            subOption.Click += new EventHandler(RemoveSubscription);
+            //call method to remove subscription
 
+
+            dataList.MouseClick += new MouseEventHandler(CheckHouse);
+            
         }
         //function of button to actually remove the publication
-        public void RemoveSubscirption(object sender, EventArgs e)
+        public void RemoveSubscription(object sender, EventArgs e)
         {
             //call method to remove subscription
             if (households.ElementAt(dataList.SelectedIndex).getAllSubscriptions() != null)
@@ -182,6 +186,20 @@ namespace newspaper_delivery_system
             messageBox.Text = "Publication removed from House's subscriptions";
   
         }
+        //checks to make sure house has subscriptions
+        public void CheckHouse(object sender, MouseEventArgs e)
+        {
+            if (households.ElementAt(dataList.SelectedIndex).getAllSubscriptions() != null)
+            {
+                subOption.Visible = true;
+                datalist2.Visible = true;
+            }
+            else
+            {
+                subOption.Visible = false;
+                datalist2.Visible = false;
+            }
+        }
         //----------------------------------------------------------------------------------------------
         //-----------------------------------------Has subscription method GUI----------------------------------
         public void HasSubscriptionButton(object sender, EventArgs e)
@@ -192,7 +210,7 @@ namespace newspaper_delivery_system
             subOption.Text = "Check for Subscription";
             //Reset button event handling
             subOption.Click -= new EventHandler(addSubscription);
-            subOption.Click -= new EventHandler(RemoveSubscirption);
+            subOption.Click -= new EventHandler(RemoveSubscription);
             subOption.Click -= new EventHandler(CheckforSubscription);
             subOption.Click += new EventHandler(CheckforSubscription);
             subOption.Visible = true;
@@ -229,7 +247,7 @@ namespace newspaper_delivery_system
             datalist2.DataSource = publications;
             datalist2.Visible = true;
             //Reset button event handling
-            subOption.Click -= new EventHandler(RemoveSubscirption);
+            subOption.Click -= new EventHandler(RemoveSubscription);
             subOption.Click -= new EventHandler(addSubscription);
             subOption.Click += new EventHandler(addSubscription);
 

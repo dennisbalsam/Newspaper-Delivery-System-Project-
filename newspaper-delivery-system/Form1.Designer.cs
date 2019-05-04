@@ -106,9 +106,9 @@
             // 
             this.dataList.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataList.FormattingEnabled = true;
-            this.dataList.Location = new System.Drawing.Point(46, 223);
+            this.dataList.Location = new System.Drawing.Point(12, 178);
             this.dataList.Name = "dataList";
-            this.dataList.Size = new System.Drawing.Size(793, 173);
+            this.dataList.Size = new System.Drawing.Size(969, 225);
             this.dataList.TabIndex = 4;
             this.dataList.Visible = false;
             this.dataList.SelectedIndexChanged += new System.EventHandler(this.dataList_SelectedIndexChanged);
@@ -116,9 +116,9 @@
             // datalist2
             // 
             this.datalist2.FormattingEnabled = true;
-            this.datalist2.Location = new System.Drawing.Point(46, 512);
+            this.datalist2.Location = new System.Drawing.Point(12, 511);
             this.datalist2.Name = "datalist2";
-            this.datalist2.Size = new System.Drawing.Size(793, 173);
+            this.datalist2.Size = new System.Drawing.Size(969, 186);
             this.datalist2.TabIndex = 5;
             this.datalist2.Visible = false;
             this.datalist2.SelectedIndexChanged += new System.EventHandler(this.datalist2_SelectedIndexChanged);
