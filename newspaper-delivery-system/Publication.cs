@@ -11,8 +11,8 @@ namespace newspaper_delivery_system
     {
         string name;
         double price;
-        int numSubs = 0;
-        double totalOwed = 0.0;
+        int numSubs = 0; //total amount of people subscribed
+        double totalOwed = 0.0; //total owed for all subscirptions
 
         // default constructor
         public Publication(string _name = "NO_NAME", double _price = 0)
@@ -25,8 +25,13 @@ namespace newspaper_delivery_system
         {
             numSubs++;
         }
+        //function to decrement amount of subs to publications
+        public void decrementSubs()
+        {
+            numSubs--;
+        }
         // function to increment total owed between all subs of publication
-        public void incrementOwed()
+        public void changeOwed()
         {
             totalOwed = price * numSubs;
         }

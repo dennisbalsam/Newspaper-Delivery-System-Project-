@@ -47,6 +47,24 @@ namespace newspaper_delivery_system
             {
                 BillingInfo();
             }
+            else if (comboBox1.SelectedItem.ToString() == "Summary Printout")
+            {
+                SummaryInfo();
+            }
+
+        }
+        //Summary Printout Function
+        public void SummaryInfo()
+        {
+            PublicationsButtonsNotVisible();
+            CarrierButtonsNotVisible();
+            HouseholdButtonsNotVisible();
+            BillingButtonsNotVisible();
+            SummaryButtonsVisible();
+            dataList.DataSource = publications;
+            dataList.Visible = true;
+            summaryButton.Click += new EventHandler(DisplaySummary);
+
         }
 
         // Billing info function
@@ -55,6 +73,7 @@ namespace newspaper_delivery_system
             PublicationsButtonsNotVisible();
             CarrierButtonsNotVisible();
             HouseholdButtonsNotVisible();
+            SummaryButtonsNotVisible();
             BillingButtonsVisible();
             DisplayallHouseinfo();
             dataList.Visible = true;
@@ -75,10 +94,12 @@ namespace newspaper_delivery_system
         // Household info function
         public void PublicationInfo()
         {
-            PublicationsButtonsVisible();
+            
             CarrierButtonsNotVisible();
             BillingButtonsNotVisible();
+            SummaryButtonsNotVisible();
             HouseholdButtonsNotVisible();
+            PublicationsButtonsVisible();
             dataList.Visible = false;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
@@ -97,6 +118,7 @@ namespace newspaper_delivery_system
             PublicationsButtonsNotVisible();
             HouseholdButtonsNotVisible();
             BillingButtonsNotVisible();
+            SummaryButtonsNotVisible();
             CarrierButtonsVisible();
             DisplayallCarrierinfo();
             option5.Click += new EventHandler(CarrierRoutesButton);
@@ -114,8 +136,9 @@ namespace newspaper_delivery_system
         {
             PublicationsButtonsNotVisible();
             CarrierButtonsNotVisible();
-            HouseholdButtonsVisible();
             BillingButtonsNotVisible();
+            SummaryButtonsNotVisible();
+            HouseholdButtonsVisible();
             DisplayallHouseinfo();
             dataList.Visible = true;
             welcomelabel2.Visible = false;
@@ -147,7 +170,7 @@ namespace newspaper_delivery_system
         {
             //call method to remove subscription
             if (households.ElementAt(dataList.SelectedIndex).getAllSubscriptions() != null)
-                households.ElementAt(dataList.SelectedIndex).removeSubscription(datalist2.SelectedIndex);
+                households.ElementAt(dataList.SelectedIndex).removeSubscription(datalist2.SelectedIndex, households.ElementAt(dataList.SelectedIndex).getAllSubscriptions());
             else
                 return;
             //Reset the list of house's subscriptions
@@ -743,14 +766,21 @@ namespace newspaper_delivery_system
                 }
             }
         }
-        //Function to insure number is positive
-        public void CheckPositive()
-        {
-    
-        }
-    
-  
+       
+        //-----------------------------------------------------------------end Billing-------------------------------------------------------------------
 
+        //----------------------------------------------------------Summary Section--------------------------------------------------------------
+        public void DisplaySummary(object sender, EventArgs e)
+        {
+            //output summary message
+            messageBox.Text = "Number of People Subscirbed: " + publications.ElementAt(dataList.SelectedIndex).NumSubs + " ----- Total Amount Owed: "
+                 + publications.ElementAt(dataList.SelectedIndex).TotalOwed;
+
+            //make panel visible 
+            panel1.Visible = true;
+        }
+  
+        //--------------------------------------------------------end summary -------------------------------------------------------------------
 
         //---------------------------------------------------------------------------------------------------------------------------------------
         // -------------------------------DISPLAY LIST FUNCTIONS---------------------------------------------
@@ -860,7 +890,12 @@ namespace newspaper_delivery_system
             billingButton.Visible = true;
 
         }
-        
+        //Summary Buttons
+        public void SummaryButtonsVisible()
+        {
+            summaryButton.Visible =  true;
+            panel1.Location = new Point(405, 558);
+        }
 
 
         //Functions to make each Sections buttons not visible
@@ -919,7 +954,13 @@ namespace newspaper_delivery_system
             paymentButton.Visible = false;
             panel1.Visible = false;
         }
-
+        //Summary buttons
+        public void SummaryButtonsNotVisible()
+        {
+            summaryButton.Visible = false;
+            panel1.Visible = false;
+            panel1.Location = new Point(435, 718);
+        }
         //All form controls
         private void welcomelabel2_Click(object sender, EventArgs e)
         {

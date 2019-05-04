@@ -54,18 +54,23 @@ namespace newspaper_delivery_system
         public void addSubscription(Publication sub)
         {
             sub.incrementSubs();
-            sub.incrementOwed();
+            sub.changeOwed();
             numSubs += 1;
             subscriptions.Add(sub);
             totalOwed += sub.Price;
         }
 
         // remove subscription from list
-        public bool removeSubscription(int index)
+        public bool removeSubscription(int index, List<Publication> pubList)
         {
 
             int originalCount = subscriptions.Count;
+            pubList.ElementAt(index).decrementSubs();
+            pubList.ElementAt(index).changeOwed();
             subscriptions.RemoveAt(index);
+            
+
+
             numSubs -= 1;
             int newCount = subscriptions.Count;
             if (originalCount > newCount)

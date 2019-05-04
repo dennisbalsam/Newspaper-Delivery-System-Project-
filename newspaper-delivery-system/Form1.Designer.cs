@@ -60,6 +60,7 @@
             this.moneyLabel = new System.Windows.Forms.Label();
             this.moneyTextbox = new System.Windows.Forms.TextBox();
             this.paymentButton = new System.Windows.Forms.Button();
+            this.summaryButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,8 @@
             "Publications",
             "Carriers",
             "Household Info",
-            "Billing"});
+            "Billing",
+            "Summary Printout"});
             this.comboBox1.Location = new System.Drawing.Point(261, 107);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(762, 21);
@@ -401,11 +403,22 @@
             this.paymentButton.UseVisualStyleBackColor = true;
             this.paymentButton.Visible = false;
             // 
+            // summaryButton
+            // 
+            this.summaryButton.Location = new System.Drawing.Point(345, 430);
+            this.summaryButton.Name = "summaryButton";
+            this.summaryButton.Size = new System.Drawing.Size(153, 50);
+            this.summaryButton.TabIndex = 33;
+            this.summaryButton.Text = "View Summary";
+            this.summaryButton.UseVisualStyleBackColor = true;
+            this.summaryButton.Visible = false;
+            // 
             // message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 800);
+            this.Controls.Add(this.summaryButton);
             this.Controls.Add(this.paymentButton);
             this.Controls.Add(this.moneyTextbox);
             this.Controls.Add(this.moneyLabel);
@@ -480,6 +493,7 @@
         private System.Windows.Forms.Label moneyLabel;
         private System.Windows.Forms.TextBox moneyTextbox;
         private System.Windows.Forms.Button paymentButton;
+        private System.Windows.Forms.Button summaryButton;
     }
 }
 
