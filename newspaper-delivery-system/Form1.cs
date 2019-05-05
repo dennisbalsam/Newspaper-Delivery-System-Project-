@@ -793,7 +793,7 @@ namespace newspaper_delivery_system
         public void DisplaySummary(object sender, EventArgs e)
         {
             //output summary message
-            messageBox.Text = "Number of People Subscribed: " + publications.ElementAt(dataList.SelectedIndex).NumSubs
+            messageBox.Text = "Number of Households Subscribed: " + publications.ElementAt(dataList.SelectedIndex).NumSubs
                 + String.Format(" ---- Total Owed:  {0:C}", publications.ElementAt(dataList.SelectedIndex).TotalOwed); 
              
             //make panel visible 
