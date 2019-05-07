@@ -65,7 +65,7 @@ namespace newspaper_delivery_system
             dataList.Visible = true;
             summaryButton.Location = new Point(435, 430);
             summaryButton.Click += new EventHandler(DisplaySummary);
-
+            
         }
 
         // Billing info function
@@ -87,7 +87,7 @@ namespace newspaper_delivery_system
             billingButton.Location = new Point(261, 430);
             billingButton.Text = "View Total Owed";
             billingButton.Click += new EventHandler(viewBill);
-
+          
 
 
         }
@@ -129,8 +129,8 @@ namespace newspaper_delivery_system
             dataList.Visible = true;
             welcomelabel2.Visible = false;
             Welcomelabel.Visible = false;
-
             
+
         }
         //Publication Info Function
         public void HouseholdInfo()
@@ -148,15 +148,16 @@ namespace newspaper_delivery_system
             option10.Click += new EventHandler(DeleteHouseholdButton);
             option11.Click += new EventHandler(ModifyInfoButton);
             option12.Click += new EventHandler(SuspendHouseholdButton);
-        
+            
         }
         //-----------------------------------------------------------------------PUBLICATIONS SECTION-----------------------------------------------------
         //--------------------------------------REMOVE METHODS GUI--------------------------------------
         //function called when remove sub button is clicked
         public void RemoveButton(object sender, EventArgs e)
         {
+            
             panel1.Visible = false;
-       
+            subOption.Visible = true;
             subOption.Text = "Remove Subscription";
             
             //Reset button event handling
@@ -166,13 +167,16 @@ namespace newspaper_delivery_system
             //call method to remove subscription
 
 
-            dataList.MouseClick += new MouseEventHandler(CheckHouse);
+            datalist2.DataSource = households.ElementAt(dataList.SelectedIndex).getAllSubscriptions();
+            datalist2.Visible = true;
 
+      
             
         }
         //function of button to actually remove the publication
         public void RemoveSubscription(object sender, EventArgs e)
         {
+            
             //call method to remove subscription
             if (households.ElementAt(dataList.SelectedIndex).getAllSubscriptions() != null)
                 households.ElementAt(dataList.SelectedIndex).removeSubscription(datalist2.SelectedIndex, households.ElementAt(dataList.SelectedIndex).getAllSubscriptions());
@@ -180,32 +184,38 @@ namespace newspaper_delivery_system
                 return;
             //Reset the list of house's subscriptions
             subs.ResetBindings(false);
-            //Call the display subscriptions method
             DisplaySubs();
+            //Call the display subscriptions method
+            
             panel1.Visible = true;
             //Change messages text
             messageBox.Text = "Publication removed from House's subscriptions";
-  
+
+            datalist2.Visible = false;
+
         }
         //checks to make sure house has subscriptions
+        /*
         public void CheckHouse(object sender, MouseEventArgs e)
         {
             if (households.ElementAt(dataList.SelectedIndex).getAllSubscriptions() != null)
             {
                 subOption.Visible = true;
+                DisplaySubs();
                 datalist2.Visible = true;
             }
             else
             {
                 subOption.Visible = false;
-                datalist2.Visible = false;
+                DisplaySubs();
             }
         }
+        */
         //----------------------------------------------------------------------------------------------
         //-----------------------------------------Has subscription method GUI----------------------------------
         public void HasSubscriptionButton(object sender, EventArgs e)
         {
-     
+            
             //Make message not visible and change text
             panel1.Visible = false;
             subOption.Text = "Check for Subscription";
@@ -381,6 +391,7 @@ namespace newspaper_delivery_system
         //--------------------------------Remove carrier button---------------------------------
         public void RemoveCarrierButton(object sender, EventArgs e)
         {
+            datalist2.Visible = false;
             //make messgae not visible
             panel1.Visible = false;
             //change location of button
@@ -412,6 +423,7 @@ namespace newspaper_delivery_system
         {
             //get selected index and delete it from list
             carrierlist.RemoveAt(dataList.SelectedIndex);
+            
             //reset the carrier list
             carrierlist.ResetBindings(false);
             DisplayallCarrierinfo();
@@ -425,6 +437,7 @@ namespace newspaper_delivery_system
         //----------------------------------------------------------------Modify carrier button
         public void ModifyCarrierButton(object sender, EventArgs e)
         {
+            datalist2.Visible = false;
             carrierSubOption.Location = new Point(435, 430);
             panel1.Visible = false;
             //Make sure textboxes are empty
