@@ -67,7 +67,8 @@ namespace newspaper_delivery_system
             int originalCount = subscriptions.Count;
             pubList.ElementAt(index).decrementSubs();
             pubList.ElementAt(index).changeOwed();
-            subscriptions.RemoveAt(index);
+            if(index > -1)
+                 subscriptions.RemoveAt(index);
             
 
 
